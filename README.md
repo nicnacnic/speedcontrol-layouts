@@ -14,7 +14,7 @@ speedcontrol-layouts was the layout pack used during Horror(ible) Games 2021 - H
 Administrator privileges will be needed to install. Some of these programs use the command line, you should be comfortable using Command Prompt or similar.
 - [Git For Windows](https://git-scm.com/downloads)
 - [Node.JS](https://nodejs.org/en/)
-- [NodeCG](https://github.com/nodecg/nodecg)
+- [NodeCG](https://github.com/nodecg/nodecg) (please use the dev branch, not the master branch)
 - [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol)
 - [Speedcontrol Tiltify](https://github.com/speedcontrol/speedcontrol-tiltify)
 
