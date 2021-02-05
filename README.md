@@ -1,6 +1,12 @@
 # Speedcontrol-Layouts
 A bundle of easy-to-use layouts for marathons to use.
 
+[![Release](https://img.shields.io/github/v/release/nicnacnic/speedcontrol-layouts?label=Release)](https://github.com/nicnacnic/restreamer-dashboard/releases)
+![Downloads](https://img.shields.io/github/downloads/nicnacnic/speedcontrol-layouts/total?label=Downloads)
+![License](https://img.shields.io/github/license/nicnacnic/speedcontrol-layouts?label=License)
+[![Twitter](https://img.shields.io/twitter/follow/nicnacnic11?style=social)](https://twitter.com/nicnacnic11)
+[![Discord](https://img.shields.io/badge/-Join%20the%20Discord!-brightgreen?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/A34Qpfe)
+
 ## About
 speedcontrol-layouts was the layout pack used during Horror(ible) Games 2021 - Heartbreak, tweaked to make creating layouts easier.
 
