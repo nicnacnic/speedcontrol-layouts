@@ -1,4 +1,4 @@
-# Speedcontrol-Layouts
+# speedcontrol-layouts
 A bundle of easy-to-use layouts for marathons to use.
 
 [![Release](https://img.shields.io/github/v/release/nicnacnic/speedcontrol-layouts?label=Release)](https://github.com/nicnacnic/restreamer-dashboard/releases)
@@ -37,7 +37,7 @@ If you need a easy-to-use dashboard for your restreamers, check out my custom-bu
 ## Suggestions And Support
 These layouts are still being developed, so if you come across any bugs or have any suggestions, please let me know by checking the list of [known bugs](https://github.com/nicnacnic/speedcontrol-layouts/wiki), and creating an issue in the [issue tracker](https://github.com/nicnacnic/speedcontrol-layouts/issues) if it isn't listed.
 
-If you're having issues installing or using these layouts, I can be reached through my Discord server. Be aware that I'm usually busy with multiple marathons and other projects so I might not be able to help you right away.
+If you're having issues installing or using these layouts, I can be reached through my [Discord](https://discord.gg/A34Qpfe) server. Be aware that I'm usually busy with multiple marathons and other projects so I might not be able to help you right away.
 
 ## Special Thanks
 BashPrime, for making the Calithon Spooktacular layouts which this layout pack is based on.
