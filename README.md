@@ -1,5 +1,5 @@
 # speedcontrol-layouts
-A bundle of easy-to-use layouts for marathons to use.
+A bundle of easy-to-use NodeCG layouts for marathons to use.
 
 [![Release](https://img.shields.io/github/v/release/nicnacnic/speedcontrol-layouts?label=Release)](https://github.com/nicnacnic/restreamer-dashboard/releases)
 ![Downloads](https://img.shields.io/github/downloads/nicnacnic/speedcontrol-layouts/total?label=Downloads)
