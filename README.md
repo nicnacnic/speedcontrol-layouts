@@ -24,6 +24,8 @@ Administrator privileges will be needed to install. Some of these programs use t
 - [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol)  (please use the dev branch, not the master branch)
 - [Speedcontrol Tiltify](https://github.com/speedcontrol/speedcontrol-tiltify)
 
+Additionally, some basic sintax knowledge of Java/Javascript and CSS will make it easier to customize this graphics package!
+
 ## Using These Layouts
 This layout pack includes many layouts with many different aspect ratios, including 4:3 and 16:9 (from 1p to 4p), GB, GBA, DS, 3DS, intermission, and a customizable omnibar. Photoshop files are also included for easy editing, from simply changing the colors to rearranging elements in your layout. And detailed documentation ensures you know what you're doing.
 
