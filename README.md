@@ -33,6 +33,9 @@ If you end up using speedcontrol-layouts during your marathon/event, it would be
 
 For a full installation and user guide, please visit the [wiki](https://github.com/nicnacnic/speedcontrol-layouts/wiki).
 
+## Commission Work
+As of March 13th, 2021, I am now offering some commission work! For a small fee, I'll be happy to make some modifications to the dashbaord to suit your needs! Everything from adding a feature, creating and updating layouts, or managing the dashboard during your marathon, and more! The price ranges from $20 to $200 depending on the size of your marathon and your needs. Since I do work on a bunch of other marathons, availability may be limited, so please reach out to me on Discord. For more information visit [https://nicnacnic.com](https://nicnacnic.com) (website still being built ATM).
+
 ## Restreamer Dashboard
 If you need a easy-to-use dashboard for your restreamers, check out my custom-built UI that works well with these layouts! [nicnacnic/restreamer-dashboard](https://github.com/nicnacnic/restreamer-dashboard)
 
