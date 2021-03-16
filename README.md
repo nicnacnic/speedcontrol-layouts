@@ -23,16 +23,41 @@ Administrator privileges will be needed to install. Some of these programs use t
 - [NodeCG](https://github.com/nodecg/nodecg)
 - [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol)
 
-For [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol), you need to use the dev branch with a version commited after February 1st, 2021 for custom data to work correctly. If you do not know how to build the files, I have a compatible build that you can use found [here](). Note that this version will get more out-of-date over time as I don't plan to update it.
+For [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol), you need to use the dev branch with a version commited after February 1st, 2021 for custom data to work correctly. If you do not know how to build the files, I have a compatible build that you can use found [here](https://github.com/nicnacnic/nodecg-speedcontrol). Note that this version will get more out-of-date over time as I don't plan to update it.
 
 Additionally, although not required, some basic knowledge of Java/Javascript, HTML and CSS will make it easier to customize these layouts.
 
 ## Installation
 To install this layout pack, navigate to your root NodeCG folder using Command Prompt or similar (I like [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)). Then, type in the following command and press enter.
 
-```nodecg install speedcontrol/speedcontrol-layouts```
+```nodecg install nicnacnic/speedcontrol-layouts```
 
-To customize these layouts, the [wiki](https://github.com/nicnacnic/speedcontrol-layouts/wiki) will have everything you need to know! 
+After the installation completes, type the following command to create a config file, found in ```<path_to_nodecg>/cfg```.
+
+```nodecg defaultconfig speedcontrol-layouts```
+
+Finally, you need to add these lines to the default [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol). Go to ```<path_to_nodecg>/cfg``` and open ```nodecg-speedcontrol.json```. Under ```schedule```, copy/paste the following lines.
+```bash
+"defaultURL": "https://horaro.org/event/schedule",
+		"disableSpeedrunComLookup": false,
+		"customData": [{
+			"name": "Host",
+			"key": "host",
+			"ignoreMarkdown": false
+		}]
+```
+And finally, add the following lines to the end of the JSON file.
+```bash
+"customData": {
+		"player": [{
+			"name": "Pronouns",
+			"key": "pronouns"
+		}]
+	}
+```
+If you're having trouble, a example config file can be found [here](https://github.com/nicnacnic/speedcontrol-layouts/wiki/NodeCG-Speedcontrol-Config-File-Example).
+
+For a full user and customization guide, the [wiki](https://github.com/nicnacnic/speedcontrol-layouts/wiki) will have everything you need to know! 
 
 ## Using These Layouts
 This layout pack includes many layouts with many different aspect ratios, including 4:3 and 16:9 (from 1p to 4p), GB, GBA, DS, 3DS, intermission, and a customizable omnibar. Photoshop files are also included for easy editing, from simply changing the colors to rearranging elements in your layout. And detailed documentation ensures you know what you're doing.
