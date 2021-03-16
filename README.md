@@ -12,8 +12,8 @@ speedcontrol-layouts was the layout pack used during Horror(ible) Games 2021 - H
 
 ### Features
 - 14 easy-to-use and customizable layouts with deteiled documentation
-- A fully customizable omnibar with Tiltify support, showing later incentives and prizes
-- A sponsor area, for showcasing products and events
+- Full Tiltify support, showing total amount raised and incentives/prizes
+- A sponsor area, for showcasing products and other events
 - Various Photoshop files to easily make your own layouts
 
 ## Requirements
@@ -21,17 +21,23 @@ Administrator privileges will be needed to install. Some of these programs use t
 - [Git For Windows](https://git-scm.com/downloads)
 - [Node.JS](https://nodejs.org/en/)
 - [NodeCG](https://github.com/nodecg/nodecg)
-- [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol)  (please use the dev branch, not the master branch)
-- [Speedcontrol Tiltify](https://github.com/speedcontrol/speedcontrol-tiltify)
+- [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol)
 
-Additionally, some basic sintax knowledge of Java/Javascript and CSS will make it easier to customize this graphics package!
+For [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol), you need to use the dev branch with a version commited after February 1st, 2021 for custom data to work correctly. If you do not know how to build the files, I have a compatible build that you can use found [here](). Note that this version will get more out-of-date over time as I don't plan to update it.
+
+Additionally, although not required, some basic knowledge of Java/Javascript, HTML and CSS will make it easier to customize these layouts.
+
+## Installation
+To install this layout pack, navigate to your root NodeCG folder using Command Prompt or similar (I like [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)). Then, type in the following command and press enter.
+
+```nodecg install speedcontrol/speedcontrol-layouts```
+
+To customize these layouts, the [wiki](https://github.com/nicnacnic/speedcontrol-layouts/wiki) will have everything you need to know! 
 
 ## Using These Layouts
 This layout pack includes many layouts with many different aspect ratios, including 4:3 and 16:9 (from 1p to 4p), GB, GBA, DS, 3DS, intermission, and a customizable omnibar. Photoshop files are also included for easy editing, from simply changing the colors to rearranging elements in your layout. And detailed documentation ensures you know what you're doing.
 
 If you end up using speedcontrol-layouts during your marathon/event, it would be greatly appreciated if you included the repository name and author in your end credits. Thank you!
-
-For a full installation and user guide, please visit the [wiki](https://github.com/nicnacnic/speedcontrol-layouts/wiki).
 
 ## Commission Work
 As of March 13th, 2021, I am now offering some commission work! For a small fee, I'll be happy to make some modifications to the dashbaord to suit your needs! Everything from adding a feature, creating and updating layouts, or managing the dashboard during your marathon, and more! The price ranges from $20 to $200 depending on the size of your marathon and your needs. Since I do work on a bunch of other marathons, availability may be limited, so please reach out to me on Discord. For more information visit [https://nicnacnic.com](https://nicnacnic.com) (website still being built ATM).
