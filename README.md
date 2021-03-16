@@ -38,7 +38,7 @@ After the installation completes, type the following command to create a config 
 
 Finally, you need to add these lines to the default [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol). Go to ```<path_to_nodecg>/cfg``` and open ```nodecg-speedcontrol.json```. Under ```schedule```, copy/paste the following lines.
 ```bash
-"defaultURL": "https://horaro.org/event/schedule",
+                "defaultURL": "https://horaro.org/event/schedule",
 		"disableSpeedrunComLookup": false,
 		"customData": [{
 			"name": "Host",
@@ -48,7 +48,7 @@ Finally, you need to add these lines to the default [NodeCG Speedcontrol](https:
 ```
 And finally, add the following lines to the end of the JSON file.
 ```bash
-"customData": {
+            "customData": {
 		"player": [{
 			"name": "Pronouns",
 			"key": "pronouns"
