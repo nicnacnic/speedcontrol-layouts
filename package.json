@@ -1,0 +1,86 @@
+{
+  "name": "speedcontrol-layouts",
+  "version": "1.0.0",
+  "description": "Editable layouts pack used during Horror(ible) Games 2021 - Heartbreak.",
+  "homepage": "https://github.com/nicnacnic/speedcontrol-layouts",
+  "author": "nicnacnic",
+  "nodecg": {
+    "compatibleRange": "^1.6.0",
+    "dependencies": [
+      "speedcontrol/nodecg-speedcontrol:>=2.0"
+    ],
+    "graphics": [
+      {
+        "file": "4x3_1p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "4x3_2p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "4x3_3p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "4x3_4p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "16x9_1p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "16x9_2p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "16x9_3p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "16x9_4p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "GB.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "GBA.html",
+        "width": 1920,
+        "height": 1080
+      },
+	  {
+        "file": "DS.html",
+        "width": 1920,
+        "height": 1080
+      },
+	  {
+        "file": "3DS.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "Intermission.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "Omnibar.html",
+        "width": 1920,
+        "height": 82.5
+      }
+    ]
+  },
+  "license": "MIT"
+}

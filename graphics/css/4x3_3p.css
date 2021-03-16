@@ -1,0 +1,79 @@
+/* Runner and pronouns panel. */
+.runner-container {
+	width: 262px;
+	height: 42px;
+	line-height: 42px;
+	
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* Runner name dynamic text. */
+.runner-name {
+	max-width: 165px;
+}
+
+/* Player 1 info position. */
+#runner-container1 {
+	left: 450px;
+	top: 6px;
+}
+
+/* Player 2 info position. */
+#runner-container2 {
+	left: 546px;
+	top: 58px;
+}
+
+/* Player 3 info position. */
+#runner-container3 {
+	left: 546px;
+	top: 613px;
+}
+
+/* Game name panel. */
+#game-name {
+	width: 330px;
+	height: 60px;
+	line-height: 60px;
+	left: 463px;
+	top: 356px;
+	
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* Category and estimate panel. */
+#info-container {
+	width: 330px;
+	height: 38px;
+	line-height: 38px;
+	left: 463px;
+	top: 420px;
+	
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* Timer panel. */
+#timer {
+	width: 349px;
+	height: 81px;
+	line-height: 81px;
+	left: 463px;
+	top: 256px;
+}
+
+/* Sponsor panel. */
+#sponsor-container {
+	width: 440px;
+	height: 330px;
+	line-height: 330px;
+	left: 0;
+	top: 332px;
+}
+
+/* Sponsor image max size. */
+img#sponsor-img {
+	max-width: 40%;
+}

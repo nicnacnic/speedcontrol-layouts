@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+	  
+      <!-- CSS -->
+      <link rel="stylesheet" href="css/common.css" />
+      <link rel="stylesheet" href="css/intermission.css" />
+      <style>
+         body {
+         background: url('img/layouts/Intermission.png') no-repeat;
+         }
+      </style>
+	  
+      <!-- JavaScript -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="js/third-party/countUp.min.js"></script>
+      <script src="js/utils.js"></script>
+      <script src="js/donation.js"></script>
+      <script src="js/layouts/intermission.js"></script>
+   </head>
+   <body>
+   
+	  <!-- Host -->
+      <div id="host-container">
+         <span id="host-label">Host:</span>
+         <span id="host"></span>
+      </div>
+	  
+	  <!-- Donation Total -->
+      <div id="donation-total" class="omnibar-item">
+         <span id="donation-total-text"></span>
+      </div>
+	  
+	  <!-- Next Run -->
+      <div id="up-next-label">Up Next</div>
+      <div id="up-next-game"></div>
+      <div id="up-next-info-container">
+         <div class="info" id="up-next-info"></div>
+         <div id="estimate-container">
+            <div id="estimate-label">
+               <img src="img/common/timer.svg" />
+            </div>
+            <div class="estimate" id="up-next-estimate"></div>
+         </div>
+      </div>
+	  
+	  <!-- On Deck Runs -->
+      <div id="on-deck-label">On Deck</div>
+      <div class="on-deck-game" id="on-deck-game1"></div>
+      <div id="on-deck-info-container1">
+         <div class="info" id="on-deck-info1"></div>
+         <div id="estimate-container">
+            <div id="estimate-label">
+               <img src="img/common/timer.svg" />
+            </div>
+            <div class="estimate" id="on-deck-estimate1"></div>
+         </div>
+      </div>
+      <div class="on-deck-game" id="on-deck-game2"></div>
+      <div id="on-deck-info-container2">
+         <div class="info" id="on-deck-info2"></div>
+         <div id="estimate-container">
+            <div id="estimate-label">
+               <img src="img/common/timer.svg" />
+            </div>
+            <div class="estimate" id="on-deck-estimate2"></div>
+         </div>
+      </div>
+   </body>
+</html>

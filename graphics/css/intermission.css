@@ -1,0 +1,220 @@
+/* Donation Total panel. */
+#donation-total {
+	font-size: 108pt;
+	font-stretch: semi-condensed;
+	width: 420px;
+	line-height: 180px;
+	text-align: center;
+	position: absolute;
+	top: 30px;
+	left: 1392px;
+	
+	padding-left: 15px;
+	padding-right: 15px;
+	
+	border: 2px solid transparent;
+}
+
+/* Host panel. */
+#host-container {
+    font-size: 30pt;
+    height: 59px;
+    line-height: 59px;
+    position: absolute;
+    top: 850px;
+    left: 0px;
+	
+	padding-left: 15px;
+	padding-right: 15px;
+	
+	border: 2px solid transparent;
+}
+
+/* Up Next label. */
+#up-next-label {
+	font-size: 24pt;
+	width: 642px;
+	position: absolute;
+	top: 226px;
+	left: 1240px;
+	
+	border: 3px solid transparent;
+}
+
+/* Game panel. */
+#up-next-game {
+	font-size: 60pt;
+	font-stretch: semi-condensed;
+	width: 650px;
+	line-height: 132px;
+	position: absolute;
+	top: 270px;
+	left: 1240px;
+	
+	padding-left: 15px;
+	padding-right: 15px;
+	
+	border: 2px solid transparent;
+}
+
+/* Up Next info panel. */
+#up-next-info-container {
+	width: 596px;
+	line-height: 65px;
+	position: absolute;
+	top: 405px;
+	left: 1296px;
+	
+	padding-left: 15px;
+	padding-right: 7.5px;
+	
+	border: 3px solid transparent;	
+}
+
+/* Runner name dynamic text. */
+#up-next-info {
+	max-width: 450px;
+	
+	border: 3px solid transparent;	
+}
+
+/* On Deck label. */
+#on-deck-label {
+	font-size: 24pt;
+	width: 573px;
+	position: absolute;
+	top: 519px;
+	left: 1320px;
+	
+	border: 3px solid transparent;
+}
+
+/* On deck game 1. */
+#on-deck-game1 {
+	font-size: 54pt;
+	font-stretch: semi-condensed;
+	width: 572px;
+	line-height: 110px;
+	position: absolute;
+	top: 561px;
+	left: 1320px;
+	
+	padding-left: 15px;
+	padding-right: 7.5px;
+	
+	border: 3px solid transparent;
+}
+
+/* On deck info panel 1. */
+#on-deck-info-container1 {
+	width: 515px;
+	line-height: 55px;
+	position: absolute;
+	top: 675px;
+	left: 1377px;
+	
+	padding-left: 15px;
+	padding-right: 7.5px;
+	
+	border: 3px solid transparent;
+}
+
+/* Runner name dynamic text. */
+#on-deck-info1 {
+	max-width: 345px;
+	
+	border: 3px solid transparent;	
+}
+
+/* On deck game 2. */
+#on-deck-game2 {
+	font-size: 54pt;
+	font-stretch: semi-condensed;
+	width: 572px;
+	line-height:110px;
+	position: absolute;
+	top: 792px;
+	left: 1320px;
+	
+	padding-left: 10px;
+	padding-right: 5px;
+	
+	border: 3px solid transparent;
+}
+
+/* On deck info panel 2. */
+#on-deck-info-container2 {
+	width: 515px;
+	line-height: 55px;
+	position: absolute;
+	top: 906px;
+	left: 1377px;
+	
+	padding-left: 15px;
+	padding-right: 7.5px;
+	
+	border: 3px solid transparent;
+}
+
+/* Runner name dynamic text. */
+#on-deck-info2 {
+	max-width: 345px;
+	
+	border: 3px solid transparent;	
+}
+
+/* Info panel options. Don't change unless you know what you're doing! */
+.info {
+	margin-top: 3px;
+	font-size: 22pt;
+	font-stretch: semi-condensed;
+	float: left;
+	vertical-align: middle;
+	width: 100%;
+	flex: 1;
+}
+
+.estimate-container {
+	float: right;
+	font-stretch: normal;
+	vertical-align: middle;
+	width: 100%;
+}
+
+.estimate-label {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.estimate {
+	display: inline-block;
+	font-stretch: normal;
+	font-size: 20pt;
+	margin-top: 6px;
+}
+
+.estimate-label img {
+	height: 27pt;
+	width: 100%;
+}
+
+/* Animal images panel. */
+#animal-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	
+	width: 1240px;
+	height: 654px;
+	position: absolute;
+	top: 255px;
+	left: -3px;
+	
+	border: 3px solid transparent;
+}
+
+/* Animal images max size. */
+img#animal-img {
+	max-width: 100%;
+}

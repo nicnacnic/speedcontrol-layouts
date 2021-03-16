@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/3DS.css" />
+	<style>
+		body {
+			background: url('img/layouts/3DS.png') no-repeat;
+		}
+	</style>
+
+	<!-- JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script src="js/layouts/game-layout.js"></script>
+	<script src="js/utils.js"></script>
+	<script src="js/timer.js"></script>
+
+	<script>
+		let isOffline = false;
+	</script>
+</head>
+
+<body>
+	<!--Runner details.-->
+	<div class="runner-container" id="runner-container1">
+		<div class="runner-name" id="runner-name1"></div>
+		<div class="pronouns" id="pronouns1"></div>
+	</div>
+
+	<!--Game details -->
+	<div id="game-name"></div>
+
+	<!-- Game Info -->
+	<div id="info-container">
+		<div id="category"></div>
+		<div id="estimate-container">
+			<div id="estimate-label">
+				<img src="img/common/timer.svg" />
+			</div>
+			<div id="estimate"></div>
+		</div>
+	</div>
+
+	<!-- Timer -->
+	<div id="timer"></div>
+</body>
+
+</html>

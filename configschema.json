@@ -1,0 +1,397 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "USE_TILTIFY": true,
+            "TILTIFY_CAMPAIGN_ID": 12345,
+            "TILTIFY_AUTH_TOKEN": "",
+            "TILTIFY_REFRESH_TIME": 5000,
+            "general": {
+                "showHost": true,
+                "showPronouns": true
+            },
+            "sponsor": {
+                "fadeInTime": 1100,
+                "dwellTime": 10000,
+                "fadeOutTime": 750,
+                "sponsorImages": [
+                    "img/logos/HiG_Logo.png",
+                    "img/logos/Charity_Logo_White.png",
+                    "img/logos/Speedrun_Logo.png"
+                ]
+            },
+            "omnibar": {
+                "showHost": true,
+                "showRuns": true,
+                "showTargets": true,
+                "showPolls": true,
+                "showRewards": true,
+                "showGoal": true,
+                "numRuns": 2,
+                "numTargets": 2,
+                "numPolls": 2,
+                "numRewards": 2,
+                "fadeInTime": 1100,
+                "dwellTime": 10000,
+                "fadeOutTime": 750
+            }
+        }
+    ],
+    "required": [
+        "USE_TILTIFY",
+        "TILTIFY_CAMPAIGN_ID",
+        "TILTIFY_AUTH_TOKEN",
+        "TILTIFY_REFRESH_TIME",
+        "general",
+        "sponsor",
+        "omnibar"
+    ],
+    "properties": {
+        "USE_TILTIFY": {
+            "$id": "#/properties/USE_TILTIFY",
+            "type": "boolean",
+            "title": "The USE_TILTIFY schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+                true
+            ]
+        },
+        "TILTIFY_CAMPAIGN_ID": {
+            "$id": "#/properties/TILTIFY_CAMPAIGN_ID",
+            "type": "integer",
+            "title": "The TILTIFY_CAMPAIGN_ID schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                12345
+            ]
+        },
+        "TILTIFY_AUTH_TOKEN": {
+            "$id": "#/properties/TILTIFY_AUTH_TOKEN",
+            "type": "string",
+            "title": "The TILTIFY_AUTH_TOKEN schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                ""
+            ]
+        },
+        "TILTIFY_REFRESH_TIME": {
+            "$id": "#/properties/TILTIFY_REFRESH_TIME",
+            "type": "integer",
+            "title": "The TILTIFY_REFRESH_TIME schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                5000
+            ]
+        },
+        "general": {
+            "$id": "#/properties/general",
+            "type": "object",
+            "title": "The general schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "showHost": true,
+                    "showPronouns": true
+                }
+            ],
+            "required": [
+                "showHost",
+                "showPronouns"
+            ],
+            "properties": {
+                "showHost": {
+                    "$id": "#/properties/general/properties/showHost",
+                    "type": "boolean",
+                    "title": "The showHost schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "showPronouns": {
+                    "$id": "#/properties/general/properties/showPronouns",
+                    "type": "boolean",
+                    "title": "The showPronouns schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                }
+            },
+            "additionalProperties": true
+        },
+        "sponsor": {
+            "$id": "#/properties/sponsor",
+            "type": "object",
+            "title": "The sponsor schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "fadeInTime": 1100,
+                    "dwellTime": 10000,
+                    "fadeOutTime": 750,
+                    "sponsorImages": [
+                        "img/logos/HiG_Logo.png",
+                        "img/logos/Charity_Logo_White.png",
+                        "img/logos/Speedrun_Logo.png"
+                    ]
+                }
+            ],
+            "required": [
+                "fadeInTime",
+                "dwellTime",
+                "fadeOutTime",
+                "sponsorImages"
+            ],
+            "properties": {
+                "fadeInTime": {
+                    "$id": "#/properties/sponsor/properties/fadeInTime",
+                    "type": "integer",
+                    "title": "The fadeInTime schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        1100
+                    ]
+                },
+                "dwellTime": {
+                    "$id": "#/properties/sponsor/properties/dwellTime",
+                    "type": "integer",
+                    "title": "The dwellTime schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        10000
+                    ]
+                },
+                "fadeOutTime": {
+                    "$id": "#/properties/sponsor/properties/fadeOutTime",
+                    "type": "integer",
+                    "title": "The fadeOutTime schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        750
+                    ]
+                },
+                "sponsorImages": {
+                    "$id": "#/properties/sponsor/properties/sponsorImages",
+                    "type": "array",
+                    "title": "The sponsorImages schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": [],
+                    "examples": [
+                        [
+                            "img/logos/HiG_Logo.png",
+                            "img/logos/Charity_Logo_White.png"
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/sponsor/properties/sponsorImages/items",
+                        "anyOf": [
+                            {
+                                "$id": "#/properties/sponsor/properties/sponsorImages/items/anyOf/0",
+                                "type": "string",
+                                "title": "The first anyOf schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "img/logos/HiG_Logo.png",
+                                    "img/logos/Charity_Logo_White.png"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            "additionalProperties": true
+        },
+        "omnibar": {
+            "$id": "#/properties/omnibar",
+            "type": "object",
+            "title": "The omnibar schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "showHost": true,
+                    "showRuns": true,
+                    "showTargets": true,
+                    "showPolls": true,
+                    "showRewards": true,
+                    "showGoal": true,
+                    "numRuns": 2,
+                    "numTargets": 2,
+                    "numPolls": 2,
+                    "numRewards": 2,
+                    "fadeInTime": 1100,
+                    "dwellTime": 10000,
+                    "fadeOutTime": 750
+                }
+            ],
+            "required": [
+                "showHost",
+                "showRuns",
+                "showTargets",
+                "showPolls",
+                "showRewards",
+                "showGoal",
+                "numRuns",
+                "numTargets",
+                "numPolls",
+                "numRewards",
+                "fadeInTime",
+                "dwellTime",
+                "fadeOutTime"
+            ],
+            "properties": {
+                "showHost": {
+                    "$id": "#/properties/omnibar/properties/showHost",
+                    "type": "boolean",
+                    "title": "The showHost schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "showRuns": {
+                    "$id": "#/properties/omnibar/properties/showRuns",
+                    "type": "boolean",
+                    "title": "The showRuns schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "showTargets": {
+                    "$id": "#/properties/omnibar/properties/showTargets",
+                    "type": "boolean",
+                    "title": "The showTargets schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "showPolls": {
+                    "$id": "#/properties/omnibar/properties/showPolls",
+                    "type": "boolean",
+                    "title": "The showPolls schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "showRewards": {
+                    "$id": "#/properties/omnibar/properties/showRewards",
+                    "type": "boolean",
+                    "title": "The showRewards schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "showGoal": {
+                    "$id": "#/properties/omnibar/properties/showGoal",
+                    "type": "boolean",
+                    "title": "The showGoal schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "numRuns": {
+                    "$id": "#/properties/omnibar/properties/numRuns",
+                    "type": "integer",
+                    "title": "The numRuns schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        2
+                    ]
+                },
+                "numTargets": {
+                    "$id": "#/properties/omnibar/properties/numTargets",
+                    "type": "integer",
+                    "title": "The numTargets schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        2
+                    ]
+                },
+                "numPolls": {
+                    "$id": "#/properties/omnibar/properties/numPolls",
+                    "type": "integer",
+                    "title": "The numPolls schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        2
+                    ]
+                },
+                "numRewards": {
+                    "$id": "#/properties/omnibar/properties/numRewards",
+                    "type": "integer",
+                    "title": "The numRewards schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        2
+                    ]
+                },
+                "fadeInTime": {
+                    "$id": "#/properties/omnibar/properties/fadeInTime",
+                    "type": "integer",
+                    "title": "The fadeInTime schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        1100
+                    ]
+                },
+                "dwellTime": {
+                    "$id": "#/properties/omnibar/properties/dwellTime",
+                    "type": "integer",
+                    "title": "The dwellTime schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        10000
+                    ]
+                },
+                "fadeOutTime": {
+                    "$id": "#/properties/omnibar/properties/fadeOutTime",
+                    "type": "integer",
+                    "title": "The fadeOutTime schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        750
+                    ]
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}
