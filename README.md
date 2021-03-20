@@ -36,26 +36,7 @@ After the installation completes, type the following command to create a config 
 
 ```nodecg defaultconfig speedcontrol-layouts```
 
-Finally, you need to add these lines to the default [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol). Go to ```<path_to_nodecg>/cfg``` and open ```nodecg-speedcontrol.json```. Under ```schedule```, copy/paste the following lines.
-```bash
-                "defaultURL": "https://horaro.org/event/schedule",
-		"disableSpeedrunComLookup": false,
-		"customData": [{
-			"name": "Host",
-			"key": "host",
-			"ignoreMarkdown": false
-		}]
-```
-And finally, add the following lines to the end of the JSON file.
-```bash
-            "customData": {
-		"player": [{
-			"name": "Pronouns",
-			"key": "pronouns"
-		}]
-	}
-```
-If you're having trouble, a example config file can be found [here](https://github.com/nicnacnic/speedcontrol-layouts/wiki/NodeCG-Speedcontrol-Config-File-Example).
+To start NodeCG, navigate to the main NodeCG folder in Command Prompt, then type `nodecg start`.
 
 For a full user and customization guide, the [wiki](https://github.com/nicnacnic/speedcontrol-layouts/wiki) will have everything you need to know! 
 
