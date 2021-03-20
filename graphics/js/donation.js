@@ -1,30 +1,54 @@
 'use strict';
+
+const speedcontrolBundle = 'nodecg-speedcontrol';
+
 $(() => {
-	const TILTIFY_CAMPAIGN_ID = nodecg.bundleConfig.TILTIFY_CAMPAIGN_ID;
-	const TILTIFY_AUTH_TOKEN = nodecg.bundleConfig.TILTIFY_AUTH_TOKEN;
 
 	let countUp;
 	let currentTotal;
+	let URL;
 
-	if (TILTIFY_CAMPAIGN_ID && TILTIFY_AUTH_TOKEN) {
-		const pollInterval = setInterval(() => loadFromTiltifyApi(), nodecg.bundleConfig.TILTIFY_REFRESH_TIME);
+	if (nodecg.bundleConfig.donation.tiltifyCampaignID && nodecg.bundleConfig.donation.tiltifyAuthToken && nodecg.bundleConfig.donation.useTiltify) {
+		URL = `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}`;
+		const pollInterval = setInterval(() => loadFromTiltifyApi(), nodecg.bundleConfig.donation.refreshTime);
 		loadFromTiltifyApi();
-	} else {
-		alert('Cannot request Tiltify API - check TILTIFY_CAMPAIGN_ID and TILTIFY_AUTH_TOKEN in donation.js');
+	}
+	else if (nodecg.bundleConfig.donation.oengusMarathon && nodecg.bundleConfig.donation.useOengus) {
+		if (nodecg.bundleConfig.donation.oengusUseSandbox)
+			URL = `https://sandbox.oengus.io/api/marathon/${nodecg.bundleConfig.donation.oengusMarathon}/donation/stats`;
+		else
+			URL = `https://oengus.io/api/marathon/${nodecg.bundleConfig.donation.oengusMarathon}/donation/stats`;
+		const pollInterval = setInterval(() => loadFromOengusApi(), nodecg.bundleConfig.donation.refreshTime);
+		loadFromOengusApi();
 	}
 
 	function loadFromTiltifyApi() {
 		$.ajax({
-			url: `https://tiltify.com/api/v3/campaigns/${TILTIFY_CAMPAIGN_ID}`,
+			url: URL,
 			type: 'get',
 			headers: {
-				'Authorization': `Bearer ${TILTIFY_AUTH_TOKEN}`
+				'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
 			},
 			dataType: 'json',
 			success: (response) => {
 				const newTotal = response.data.totalAmountRaised;
 
-				// Only update if we get a new value from the API.
+				if (currentTotal !== newTotal) {
+					currentTotal = newTotal;
+					handleCountUp(currentTotal);
+				}
+			}
+		});
+	}
+
+	function loadFromOengusApi() {
+		$.ajax({
+			url: URL,
+			type: 'get',
+			dataType: 'json',
+			success: (response) => {
+				const newTotal = response.total;
+
 				if (currentTotal !== newTotal) {
 					currentTotal = newTotal;
 					handleCountUp(currentTotal);

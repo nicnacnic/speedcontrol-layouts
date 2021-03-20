@@ -7,13 +7,18 @@
     "default": {},
     "examples": [
         {
-            "USE_TILTIFY": true,
-            "TILTIFY_CAMPAIGN_ID": 12345,
-            "TILTIFY_AUTH_TOKEN": "",
-            "TILTIFY_REFRESH_TIME": 5000,
-            "general": {
-                "showHost": true,
-                "showPronouns": true
+            "donation": {
+                "useTiltify": false,
+                "tiltifyCampaignID": 12345,
+                "tiltifyAuthToken": "myTiltifyAuthToken",
+                "useOengus": false,
+                "oengusMarathon": "oengusMarathonShortname",
+                "oengusUseSandbox": false,
+                "refreshTime": 10000
+            },
+            "customData": {
+                "useCustomHost": false,
+                "useCustomPronouns": false
             },
             "sponsor": {
                 "fadeInTime": 1100,
@@ -27,7 +32,6 @@
             },
             "omnibar": {
                 "showHost": true,
-                "showRuns": true,
                 "showTargets": true,
                 "showPolls": true,
                 "showRewards": true,
@@ -43,90 +47,147 @@
         }
     ],
     "required": [
-        "USE_TILTIFY",
-        "TILTIFY_CAMPAIGN_ID",
-        "TILTIFY_AUTH_TOKEN",
-        "TILTIFY_REFRESH_TIME",
-        "general",
+        "donation",
+        "customData",
         "sponsor",
         "omnibar"
     ],
     "properties": {
-        "USE_TILTIFY": {
-            "$id": "#/properties/USE_TILTIFY",
-            "type": "boolean",
-            "title": "The USE_TILTIFY schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": false,
-            "examples": [
-                true
-            ]
-        },
-        "TILTIFY_CAMPAIGN_ID": {
-            "$id": "#/properties/TILTIFY_CAMPAIGN_ID",
-            "type": "integer",
-            "title": "The TILTIFY_CAMPAIGN_ID schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": 0,
-            "examples": [
-                12345
-            ]
-        },
-        "TILTIFY_AUTH_TOKEN": {
-            "$id": "#/properties/TILTIFY_AUTH_TOKEN",
-            "type": "string",
-            "title": "The TILTIFY_AUTH_TOKEN schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": "",
-            "examples": [
-                ""
-            ]
-        },
-        "TILTIFY_REFRESH_TIME": {
-            "$id": "#/properties/TILTIFY_REFRESH_TIME",
-            "type": "integer",
-            "title": "The TILTIFY_REFRESH_TIME schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": 0,
-            "examples": [
-                5000
-            ]
-        },
-        "general": {
-            "$id": "#/properties/general",
+        "donation": {
+            "$id": "#/properties/donation",
             "type": "object",
-            "title": "The general schema",
+            "title": "The donation schema",
             "description": "An explanation about the purpose of this instance.",
             "default": {},
             "examples": [
                 {
-                    "showHost": true,
-                    "showPronouns": true
+                    "useTiltify": false,
+                    "tiltifyCampaignID": 12345,
+                    "tiltifyAuthToken": "myTiltifyAuthToken",
+                    "useOengus": false,
+                    "oengusMarathon": "oengusMarathonShortname",
+                    "oengusUseSandbox": false,
+                    "refreshTime": 10000
                 }
             ],
             "required": [
-                "showHost",
-                "showPronouns"
+                "useTiltify",
+                "tiltifyCampaignID",
+                "tiltifyAuthToken",
+                "useOengus",
+                "oengusMarathon",
+                "oengusUseSandbox",
+                "refreshTime"
             ],
             "properties": {
-                "showHost": {
-                    "$id": "#/properties/general/properties/showHost",
+                "useTiltify": {
+                    "$id": "#/properties/donation/properties/useTiltify",
                     "type": "boolean",
-                    "title": "The showHost schema",
+                    "title": "The useTiltify schema",
                     "description": "An explanation about the purpose of this instance.",
                     "default": false,
                     "examples": [
-                        true
+                        false
                     ]
                 },
-                "showPronouns": {
-                    "$id": "#/properties/general/properties/showPronouns",
+                "tiltifyCampaignID": {
+                    "$id": "#/properties/donation/properties/tiltifyCampaignID",
+                    "type": "integer",
+                    "title": "The tiltifyCampaignID schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        12345
+                    ]
+                },
+                "tiltifyAuthToken": {
+                    "$id": "#/properties/donation/properties/tiltifyAuthToken",
+                    "type": "string",
+                    "title": "The tiltifyAuthToken schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "myTiltifyAuthToken"
+                    ]
+                },
+                "useOengus": {
+                    "$id": "#/properties/donation/properties/useOengus",
                     "type": "boolean",
-                    "title": "The showPronouns schema",
+                    "title": "The useOengus schema",
                     "description": "An explanation about the purpose of this instance.",
                     "default": false,
                     "examples": [
-                        true
+                        false
+                    ]
+                },
+                "oengusMarathon": {
+                    "$id": "#/properties/donation/properties/oengusMarathon",
+                    "type": "string",
+                    "title": "The oengusMarathon schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "oengusMarathonShortname"
+                    ]
+                },
+                "oengusUseSandbox": {
+                    "$id": "#/properties/donation/properties/oengusUseSandbox",
+                    "type": "boolean",
+                    "title": "The oengusUseSandbox schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "refreshTime": {
+                    "$id": "#/properties/donation/properties/refreshTime",
+                    "type": "integer",
+                    "title": "The refreshTime schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        10000
+                    ]
+                }
+            },
+            "additionalProperties": true
+        },
+        "customData": {
+            "$id": "#/properties/customData",
+            "type": "object",
+            "title": "The customData schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "useCustomHost": false,
+                    "useCustomPronouns": false
+                }
+            ],
+            "required": [
+                "useCustomHost",
+                "useCustomPronouns"
+            ],
+            "properties": {
+                "useCustomHost": {
+                    "$id": "#/properties/customData/properties/useCustomHost",
+                    "type": "boolean",
+                    "title": "The useCustomHost schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "useCustomPronouns": {
+                    "$id": "#/properties/customData/properties/useCustomPronouns",
+                    "type": "boolean",
+                    "title": "The useCustomPronouns schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        false
                     ]
                 }
             },
@@ -229,7 +290,6 @@
             "examples": [
                 {
                     "showHost": true,
-                    "showRuns": true,
                     "showTargets": true,
                     "showPolls": true,
                     "showRewards": true,
@@ -245,7 +305,6 @@
             ],
             "required": [
                 "showHost",
-                "showRuns",
                 "showTargets",
                 "showPolls",
                 "showRewards",
@@ -263,16 +322,6 @@
                     "$id": "#/properties/omnibar/properties/showHost",
                     "type": "boolean",
                     "title": "The showHost schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": false,
-                    "examples": [
-                        true
-                    ]
-                },
-                "showRuns": {
-                    "$id": "#/properties/omnibar/properties/showRuns",
-                    "type": "boolean",
-                    "title": "The showRuns schema",
                     "description": "An explanation about the purpose of this instance.",
                     "default": false,
                     "examples": [
