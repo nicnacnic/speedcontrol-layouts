@@ -50,7 +50,7 @@ $(() => {
 		fadeHtml(upNextGame, currentRun.game, true);
 		fadeHtml(upNextInfo, getNamesForRun(runDataActiveRun.value).join(', '), true);
 		fadeHtml(upNextEstimate, currentRun.estimate, true);
-		if (nodecg.bundleConfig.general.showHost && currentRun.customData.host !== undefined)
+		if (nodecg.bundleConfig.customData.useCustomHost && currentRun.customData.host !== undefined)
 			fadeHtml('#host', "Host: " + currentRun.customData.host);
 		else
 			fadeHtml('#host', '');

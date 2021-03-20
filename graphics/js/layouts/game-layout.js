@@ -36,7 +36,7 @@ $(() => {
 				for (let player of team.players) {
 					fadeText('#runner-name' + (i + 1), player.name, true);
 					let pronoun;
-					if (nodecg.bundleConfig.general.showPronouns) {
+					if (nodecg.bundleConfig.customData.useCustomPronouns) {
 						pronoun = '[' + player.customData.pronouns + ']';
 						if (pronoun === '[undefined]')
 							pronoun = '';
