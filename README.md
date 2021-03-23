@@ -12,7 +12,7 @@ speedcontrol-layouts was the layout pack used during Horror(ible) Games 2021 - H
 
 ### Features
 - 14 easy-to-use and customizable layouts with deteiled documentation
-- Full Tiltify support, showing total amount raised and incentives/prizes
+- Full Tiltify and Oengus support, showing total amount raised and incentives/prizes
 - A sponsor area, for showcasing products and other events
 - Various Photoshop files to easily make your own layouts
 
