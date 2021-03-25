@@ -46,7 +46,7 @@ This layout pack includes many layouts with many different aspect ratios, includ
 If you end up using speedcontrol-layouts during your marathon/event, it would be greatly appreciated if you included the repository name and author in your end credits. Thank you!
 
 ## Commission Work
-As of March 13th, 2021, I am now offering some commission work! For a small fee, I'll be happy to make some modifications to the dashbaord to suit your needs! Everything from adding a feature, creating and updating layouts, or managing the dashboard during your marathon, and more! The price ranges from $20 to $200 depending on the size of your marathon and your needs. Since I do work on a bunch of other marathons, availability may be limited, so please reach out to me on Discord. For more information visit [https://nicnacnic.com](https://nicnacnic.com) (website still being built ATM).
+I'm now offering commission work! For a small fee, I can make custom layouts, modifications to the dashboard, managing NodeCG and more! Prices usually range from $20 to $200. For more information visit [https://www.nicnacnic.com/commission-work](https://www.nicnacnic.com/commission-work) or contact me through Discord.
 
 ## Restreamer Dashboard
 If you need a easy-to-use dashboard for your restreamers, check out my custom-built UI that works well with these layouts! [nicnacnic/restreamer-dashboard](https://github.com/nicnacnic/restreamer-dashboard)
