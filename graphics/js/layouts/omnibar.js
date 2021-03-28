@@ -348,7 +348,6 @@ $(() => {
 				},
 				dataType: 'json',
 				success: (response) => {
-					console.log(response.data);
 					activeMilestone = response.data.fundraiserGoalAmount;
 				}
 			});
