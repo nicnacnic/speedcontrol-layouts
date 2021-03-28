@@ -3,10 +3,10 @@
 // Set static text.
 const OMNIBAR_STATIC = [
 	`<p class="is-single-line is-text-centered">
-		Horror(ible) Games 2021 - Heartbreak benefits the
+		Horror(ible) Games 2021 - Refresh benefits the
 		<span style="color: #F2779D;">Heartland Animal Shelter</span>
 	</p>`,
-	`<p class="is-single-line is-text-centered">Donate at <span style="color: #F2779D;">https://tiltify.com/@gamesible/hig21-winter-wasteland</span></p>`
+	`<p class="is-single-line is-text-centered">Donate at <span style="color: #F2779D;">https://tiltify.com/@gamesible/hig-2021-refresh</span></p>`
 ];
 
 $(() => {
@@ -152,14 +152,14 @@ $(() => {
 
 	let activeRun, activeTarget, activePoll, activeReward, activeMilestone, activeHost;
 	activeRun = activeTarget = activePoll = activeReward = activeMilestone = activeHost = [];
-	
+
 	let staticIndex, runIndex, targetIndex, pollIndex, rewardIndex, omnibarText;
 	rewardIndex = pollIndex = targetIndex = runIndex = 100;
 	staticIndex = omnibarText = 0;
-	
+
 	let showHost = true;
 	let showGoal = false;
-	
+
 	let runDataActiveRun = nodecg.Replicant('runDataActiveRun', speedcontrolBundle);
 	let runDataArray = nodecg.Replicant('runDataArray', speedcontrolBundle);
 
@@ -195,145 +195,163 @@ $(() => {
 		activeTarget = [];
 		activePoll = [];
 		activeReward = [];
-		if (nodecg.bundleConfig.omnibar.showTargets && omnibarText < 3) {
-			if (nodecg.bundleConfig.donation.useTiltify) {
-				$.ajax({
-					url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}/challenges`,
-					type: 'get',
-					headers: {
-						'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
-					},
-					dataType: 'json',
-					success: (response) => {
-						for (let i = 0; i < response.data.length; i++) {
-							if (response.data[i].active && response.data[i].totalAmountRaised < response.data[i].amount) {
-								activeTarget[j] = response.data[i];
-								j++;
-							}
-						}
-						if (nodecg.bundleConfig.omnibar.showTargets && activeTarget.length > 0)
-							activeTarget.sort((a, b) => a.endsAt - b.endsAt);
-					}
-				});
-			}
-			else if (nodecg.bundleConfig.donation.useOengus) {
-				$.ajax({
-					url: URL,
-					type: 'get',
-					dataType: 'json',
-					success: (response) => {
-						for (let i = 0; i < response.length; i++) {
-							if (response[i].locked && response[i].currentAmount < response[i].goal) {
-								activeTarget[j] = response[i];
-								j++;
-							}
+		if (nodecg.bundleConfig.omnibar.showTargets && omnibarText < 3 && nodecg.bundleConfig.donation.useTiltify) {
+			$.ajax({
+				url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}/challenges`,
+				type: 'get',
+				headers: {
+					'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
+				},
+				dataType: 'json',
+				success: (response) => {
+					for (let i = 0; i < response.data.length; i++) {
+						if (response.data[i].active && response.data[i].totalAmountRaised < response.data[i].amount) {
+							activeTarget[j] = response.data[i];
+							j++;
 						}
 					}
-				});
-			}
+					if (activeTarget.length > 0)
+						activeTarget.sort((a, b) => a.endsAt - b.endsAt);
+					else {
+						omnibarText++;
+						loadDataFromApi();
+					}
+				}
+			});
 		}
-		else if (nodecg.bundleConfig.omnibar.showPolls && omnibarText < 4) {
-			if (nodecg.bundleConfig.donation.useTiltify) {
-				$.ajax({
-					url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}/polls`,
-					type: 'get',
-					headers: {
-						'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
-					},
-					dataType: 'json',
-					success: (response) => {
-						for (let i = 0; i < response.data.length; i++) {
-							if (response.data[i].active) {
-								activePoll[j] = response.data[i];
-								j++;
-							}
-						}
-						if (activePoll.length > 0) {
-							for (let i = 0; i <= activePoll.length - 1; i++) {
-								let pollToSort = activePoll[i].options;
-								pollToSort.sort((a, b) => b.totalAmountRaised - a.totalAmountRaised);
-								activePoll[i].options = pollToSort;
-							}
+		else if (nodecg.bundleConfig.omnibar.showTargets && omnibarText < 3 && nodecg.bundleConfig.donation.useOengus) {
+			$.ajax({
+				url: URL,
+				type: 'get',
+				dataType: 'json',
+				success: (response) => {
+					for (let i = 0; i < response.length; i++) {
+						if (!response[i].locked && response[i].currentAmount < response[i].goal) {
+							activeTarget[j] = response[i];
+							j++;
 						}
 					}
-				});
-			}
-			else if (nodecg.bundleConfig.donation.useOengus) {
-				$.ajax({
-					url: URL,
-					type: 'get',
-					dataType: 'json',
-					success: (response) => {
-						for (let i = 0; i < response.length; i++) {
-							if (response[i].locked && response[i].bidWar && response[i].currentAmount < response[i].goal) {
-								activePoll[j] = response[i];
-								j++;
-							}
-						}
-						if (activePoll.length > 0) {
-							for (let i = 0; i <= activePoll.length - 1; i++) {
-								let pollToSort = activePoll[i].bids;
-								pollToSort.sort((a, b) => b.currentAmount - a.currentAmount);
-								activePoll[i].bids = pollToSort;
-							}
-						}
+					if (activeTarget.length > 0) { }
+					else {
+						omnibarText++;
+						loadDataFromApi();
 					}
-				});
-			}
+				}
+			});
 		}
-		else if (nodecg.bundleConfig.omnibar.showRewards && omnibarText < 5) {
-			if (nodecg.bundleConfig.donation.useTiltify) {
-				$.ajax({
-					url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}/rewards`,
-					type: 'get',
-					headers: {
-						'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
-					},
-					dataType: 'json',
-					success: (response) => {
-						for (let i = 0; i < response.data.length; i++) {
-							if (response.data[i].active) {
-								activeReward[j] = response.data[i];
-								j++;
-							}
-						}
-						if (nodecg.bundleConfig.omnibar.showRewards && activeReward.length > 0)
-							activeReward.sort((a, b) => a.endsAt - b.endsAt);
-					}
-				});
-			}
-			// Will be enabled when Oengus supports prizes.
-			/* else if (nodecg.bundleConfig.donation.useOengus) {
-				$.ajax({
-					url: URL,
-					type: 'get',
-					dataType: 'json',
-					success: (response) => {
-						for (let i = 0; i < response.length; i++) {
-							if (response[i].locked && response[i].currentAmount < response[i].goal) {
-								activeReward[j] = response[i];
-								j++;
-							}
+		else if (nodecg.bundleConfig.omnibar.showPolls && omnibarText < 4 && nodecg.bundleConfig.donation.useTiltify) {
+			$.ajax({
+				url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}/polls`,
+				type: 'get',
+				headers: {
+					'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
+				},
+				dataType: 'json',
+				success: (response) => {
+					for (let i = 0; i < response.data.length; i++) {
+						if (response.data[i].active) {
+							activePoll[j] = response.data[i];
+							j++;
 						}
 					}
-				});
-			} */
+					if (activePoll.length > 0) {
+						for (let i = 0; i <= activePoll.length - 1; i++) {
+							let pollToSort = activePoll[i].options;
+							pollToSort.sort((a, b) => b.totalAmountRaised - a.totalAmountRaised);
+							activePoll[i].options = pollToSort;
+						}
+					}
+					else {
+						omnibarText++;
+						loadDataFromApi();
+					}
+				}
+			});
 		}
-		else if (nodecg.bundleConfig.omnibar.showGoal && omnibarText < 6) {
-			if (nodecg.bundleConfig.donation.useTiltify) {
-				$.ajax({
-					url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}`,
-					type: 'get',
-					headers: {
-						'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
-					},
-					dataType: 'json',
-					success: (response) => {
-						console.log(response.data);
-						activeMilestone = response.data.fundraiserGoalAmount;
+		else if (nodecg.bundleConfig.omnibar.showPolls && omnibarText < 4 && nodecg.bundleConfig.donation.useOengus) {
+			$.ajax({
+				url: URL,
+				type: 'get',
+				dataType: 'json',
+				success: (response) => {
+					for (let i = 0; i < response.length; i++) {
+						if (!response[i].locked && response[i].bidWar && response[i].currentAmount < response[i].goal) {
+							activePoll[j] = response[i];
+							j++;
+						}
 					}
-				});
-			}
+					if (activePoll.length > 0) {
+						for (let i = 0; i <= activePoll.length - 1; i++) {
+							let pollToSort = activePoll[i].bids;
+							pollToSort.sort((a, b) => b.currentAmount - a.currentAmount);
+							activePoll[i].bids = pollToSort;
+						}
+					}
+					else {
+						omnibarText++;
+						loadDataFromApi();
+					}
+				}
+			});
+		}
+		else if (nodecg.bundleConfig.omnibar.showRewards && omnibarText < 5 && nodecg.bundleConfig.donation.useTiltify) {
+			$.ajax({
+				url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}/rewards`,
+				type: 'get',
+				headers: {
+					'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
+				},
+				dataType: 'json',
+				success: (response) => {
+					for (let i = 0; i < response.data.length; i++) {
+						if (response.data[i].active) {
+							activeReward[j] = response.data[i];
+							j++;
+						}
+					}
+					if (activeReward.length > 0)
+						activeReward.sort((a, b) => a.endsAt - b.endsAt);
+					else {
+						omnibarText++;
+						loadDataFromApi();
+					}
+				}
+			});
+		}
+		// Will be enabled when Oengus supports prizes.
+		/* else if (nodecg.bundleConfig.omnibar.showRewards && omnibarText < 5 && nodecg.bundleConfig.donation.useOengus) {
+			$.ajax({
+				url: URL,
+				type: 'get',
+				dataType: 'json',
+				success: (response) => {
+					for (let i = 0; i < response.length; i++) {
+						if (!response[i].locked && response[i].currentAmount < response[i].goal) {
+							activeReward[j] = response[i];
+							j++;
+						}
+					}
+					if (activeReward.length > 0) {}
+					else {
+						omnibarText++;
+						loadDataFromApi();
+					}
+				}
+			});
+		} */
+		else if (nodecg.bundleConfig.omnibar.showGoal && omnibarText < 6 && nodecg.bundleConfig.donation.useTiltify) {
+			$.ajax({
+				url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}`,
+				type: 'get',
+				headers: {
+					'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
+				},
+				dataType: 'json',
+				success: (response) => {
+					console.log(response.data);
+					activeMilestone = response.data.fundraiserGoalAmount;
+				}
+			});
 		}
 	}
 
@@ -363,8 +381,7 @@ $(() => {
 				omnibarText = 2;
 				displayActiveRuns(activeRun[runIndex]);
 				runIndex++;
-				if (runIndex === (nodecg.bundleConfig.omnibar.numRuns || activeRun.length))
-				{
+				if (runIndex === (nodecg.bundleConfig.omnibar.numRuns || activeRun.length)) {
 					loadDataFromApi();
 				}
 			}
@@ -372,8 +389,7 @@ $(() => {
 				omnibarText = 3;
 				displayActiveTargets(activeTarget[targetIndex]);
 				targetIndex++;
-				if (targetIndex === (nodecg.bundleConfig.omnibar.numTargets || activeTarget.length))
-				{
+				if (targetIndex === (nodecg.bundleConfig.omnibar.numTargets || activeTarget.length)) {
 					loadDataFromApi();
 				}
 			}
@@ -381,8 +397,7 @@ $(() => {
 				omnibarText = 4;
 				displayActivePolls(activePoll[pollIndex]);
 				pollIndex++;
-				if (pollIndex === (nodecg.bundleConfig.omnibar.numPolls || activePoll.length))
-				{
+				if (pollIndex === (nodecg.bundleConfig.omnibar.numPolls || activePoll.length)) {
 					loadDataFromApi();
 				}
 			}
@@ -390,12 +405,11 @@ $(() => {
 				omnibarText = 5;
 				displayActiveRewards(activeReward[rewardIndex]);
 				rewardIndex++;
-				if (rewardtIndex === (nodecg.bundleConfig.omnibar.numRewards || activeReward.length))
-				{
+				if (rewardtIndex === (nodecg.bundleConfig.omnibar.numRewards || activeReward.length)) {
 					loadDataFromApi();
 				}
 			}
-			else if (nodecg.bundleConfig.omnibar.showGoal && nodecg.bundleConfig.donation.useTiltify && showGoal) {
+			else if (nodecg.bundleConfig.omnibar.showGoal && nodecg.bundleConfig.donation.useTiltify && showGoal && activeMilestone !== undefined) {
 				omnibarText = 6;
 				displayActiveMilestone(activeMilestone);
 				showGoal = false;
