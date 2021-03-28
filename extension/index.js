@@ -23,7 +23,7 @@ module.exports = function(nodecg) {
 				nodecg.log.warn("Tiltify features disabled.")
 			}
 			else {
-				nodecg.log.info("Connected to the Tiltify API! Tiltify features enabled.")
+				nodecg.log.info(`Connected to campaign ID ${nodecg.bundleConfig.donation.tiltifyCampaignID}! Tiltify features enabled.`)
 			}
 		});
 	}
@@ -47,7 +47,7 @@ module.exports = function(nodecg) {
 				nodecg.log.warn("Oengus features disabled.")
 			}
 			else {
-				nodecg.log.info("Connected to the Oengus API! Oengus features enabled.")
+				nodecg.log.info(`Connected to marathon ${nodecg.bundleConfig.donation.oengusMarathon}! Oengus features enabled.`)
 				if (oengusSandbox)
 				nodecg.log.warn("You are using a Oengus sandbox marathon! To disable, set oengusUseSandbox to false.");
 				
