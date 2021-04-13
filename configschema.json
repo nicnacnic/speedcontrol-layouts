@@ -1,18 +1,54 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "http://example.com/example.json",
-    "type": "object",
-    "title": "The root schema",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "default": {
+        "donation": {
+            "useTiltify": false,
+            "tiltifyCampaignID": 123456,
+            "tiltifyAuthToken": "<auth_token_here>",
+            "useOengus": false,
+            "oengusMarathon": "<marathon_shortname_here>",
+            "oengusUseSandbox": false,
+            "refreshTime": 10000
+        },
+        "customData": {
+            "useCustomHost": false,
+            "useCustomPronouns": false
+        },
+        "sponsor": {
+            "fadeInTime": 1100,
+            "dwellTime": 10000,
+            "fadeOutTime": 750,
+            "sponsorImages": [
+                "img/logos/HiG_Logo.png",
+                "img/logos/Charity_Logo_White.png",
+                "img/logos/Speedrun_Logo.png"
+            ]
+        },
+        "omnibar": {
+            "showHost": true,
+            "showTargets": true,
+            "showPolls": true,
+            "showRewards": true,
+            "showGoal": true,
+            "numRuns": 2,
+            "numTargets": 2,
+            "numPolls": 2,
+            "numRewards": 2,
+            "fadeInTime": 1100,
+            "dwellTime": 10000,
+            "fadeOutTime": 750
+        }
+    },
     "description": "The root schema comprises the entire JSON document.",
-    "default": {},
     "examples": [
         {
             "donation": {
                 "useTiltify": false,
                 "tiltifyCampaignID": 123456,
-                "tiltifyAuthToken": "<your-auth-token-here>",
+                "tiltifyAuthToken": "<auth_token_here>",
                 "useOengus": false,
-                "oengusMarathon": "",
+                "oengusMarathon": "<marathon_shortname_here>",
                 "oengusUseSandbox": false,
                 "refreshTime": 10000
             },
@@ -52,6 +88,8 @@
         "sponsor",
         "omnibar"
     ],
+    "title": "The root schema",
+    "type": "object",
     "properties": {
         "donation": {
             "$id": "#/properties/donation",
@@ -63,9 +101,9 @@
                 {
                     "useTiltify": false,
                     "tiltifyCampaignID": 123456,
-                    "tiltifyAuthToken": "<your-auth-token-here>",
+                    "tiltifyAuthToken": "<auth_token_here>",
                     "useOengus": false,
-                    "oengusMarathon": "",
+                    "oengusMarathon": "<marathon_shortname_here>",
                     "oengusUseSandbox": false,
                     "refreshTime": 10000
                 }
@@ -107,7 +145,7 @@
                     "description": "An explanation about the purpose of this instance.",
                     "default": "",
                     "examples": [
-                        "<your-auth-token-here>"
+                        "<auth_token_here>"
                     ]
                 },
                 "useOengus": {
@@ -127,7 +165,7 @@
                     "description": "An explanation about the purpose of this instance.",
                     "default": "",
                     "examples": [
-                        ""
+                        "<marathon_shortname_here>"
                     ]
                 },
                 "oengusUseSandbox": {
