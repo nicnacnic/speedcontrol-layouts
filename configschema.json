@@ -9,10 +9,10 @@
         {
             "donation": {
                 "useTiltify": false,
-                "tiltifyCampaignID": 12345,
-                "tiltifyAuthToken": "myTiltifyAuthToken",
+                "tiltifyCampaignID": 123456,
+                "tiltifyAuthToken": "<your-auth-token-here>",
                 "useOengus": false,
-                "oengusMarathon": "oengusMarathonShortname",
+                "oengusMarathon": "",
                 "oengusUseSandbox": false,
                 "refreshTime": 10000
             },
@@ -62,10 +62,10 @@
             "examples": [
                 {
                     "useTiltify": false,
-                    "tiltifyCampaignID": 12345,
-                    "tiltifyAuthToken": "myTiltifyAuthToken",
+                    "tiltifyCampaignID": 123456,
+                    "tiltifyAuthToken": "<your-auth-token-here>",
                     "useOengus": false,
-                    "oengusMarathon": "oengusMarathonShortname",
+                    "oengusMarathon": "",
                     "oengusUseSandbox": false,
                     "refreshTime": 10000
                 }
@@ -97,7 +97,7 @@
                     "description": "An explanation about the purpose of this instance.",
                     "default": 0,
                     "examples": [
-                        12345
+                        123456
                     ]
                 },
                 "tiltifyAuthToken": {
@@ -107,7 +107,7 @@
                     "description": "An explanation about the purpose of this instance.",
                     "default": "",
                     "examples": [
-                        "myTiltifyAuthToken"
+                        "<your-auth-token-here>"
                     ]
                 },
                 "useOengus": {
@@ -127,7 +127,7 @@
                     "description": "An explanation about the purpose of this instance.",
                     "default": "",
                     "examples": [
-                        "oengusMarathonShortname"
+                        ""
                     ]
                 },
                 "oengusUseSandbox": {
