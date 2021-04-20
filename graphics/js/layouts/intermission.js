@@ -1,5 +1,5 @@
 'use strict';
-const speedcontrolBundle = 'nodecg-speedcontrol';
+
 $(() => {
 	let runDataActiveRun = nodecg.Replicant('runDataActiveRun', speedcontrolBundle);
 	let runDataArray = nodecg.Replicant('runDataArray', speedcontrolBundle);
