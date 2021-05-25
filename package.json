@@ -1,6 +1,6 @@
 {
   "name": "speedcontrol-layouts",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A bundle of easy-to-use NodeCG layouts for marathons to use.",
   "homepage": "https://github.com/nicnacnic/speedcontrol-layouts",
   "author": "nicnacnic",
@@ -106,5 +106,8 @@
         "height": 82.5
       }
     ]
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
   }
 }
