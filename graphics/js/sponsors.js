@@ -1,31 +1,25 @@
-let index = 0;
-let SPONSOR_IMGS;
+const sponsorImgs = nodecg.Replicant('assets:sponsorContainer');
 
-$(() => {
-	SPONSOR_IMGS = nodecg.Replicant('assets:sponsorContainer');
-	
-	NodeCG.waitForReplicants(SPONSOR_IMGS).then(() => runImages());
+NodeCG.waitForReplicants(sponsorImgs).then(() => runImages());
 
-	$('#sponsor-img').on('load', () => {
-		$('#sponsor-img').fadeIn(nodecg.bundleConfig.sponsor.fadeInTime);
-	});
-
-	function updateSponsorImage(imgSrc) {
-		$('#sponsor-img').fadeOut(nodecg.bundleConfig.sponsor.fadeOutTime, () => {
-			setTimeout(() => {
-				$('#sponsor-img').attr('src', imgSrc);
-			}, 500);
+function updateSponsorImage(imgSrc) {
+	$('#sponsor-img').fadeOut(nodecg.bundleConfig.sponsor.fadeOutTime, () => {
+		setTimeout(() => {
+			$('#sponsor-img').attr('src', imgSrc);
+		}, 500);
+		$('#sponsor-img').on('load', () => {
+			$('#sponsor-img').fadeIn(nodecg.bundleConfig.sponsor.fadeInTime);
 		});
-	}
-	
-	function runImages() {
-		let index = 1;
-		updateSponsorImage(SPONSOR_IMGS.value[0].url)
-		setInterval(() => {
-			if (index === SPONSOR_IMGS.value.length)
-				index = 0;
-			updateSponsorImage(SPONSOR_IMGS.value[index].url)
-			index++;
-		}, nodecg.bundleConfig.sponsor.dwellTime)
-	}
-});
+	});
+}
+
+function runImages() {
+	let index = 1;
+	updateSponsorImage(sponsorImgs.value[0].url)
+	setInterval(() => {
+		if (index === sponsorImgs.value.length)
+			index = 0;
+		updateSponsorImage(sponsorImgs.value[index].url)
+		index++;
+	}, nodecg.bundleConfig.sponsor.dwellTime)
+}

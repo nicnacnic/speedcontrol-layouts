@@ -12,8 +12,7 @@
             "refreshTime": 10000
         },
         "customData": {
-            "useCustomHost": false,
-            "useCustomPronouns": false
+            "useCustomHost": false
         },
         "sponsor": {
             "fadeInTime": 1100,
@@ -45,8 +44,7 @@
                 "refreshTime": 10000
             },
             "customData": {
-                "useCustomHost": false,
-                "useCustomPronouns": false
+                "useCustomHost": false
             },
             "sponsor": {
                 "fadeInTime": 1100,
@@ -183,29 +181,17 @@
             "default": {},
             "examples": [
                 {
-                    "useCustomHost": false,
-                    "useCustomPronouns": false
+                    "useCustomHost": false
                 }
             ],
             "required": [
-                "useCustomHost",
-                "useCustomPronouns"
+                "useCustomHost"
             ],
             "properties": {
                 "useCustomHost": {
                     "$id": "#/properties/customData/properties/useCustomHost",
                     "type": "boolean",
                     "title": "The useCustomHost schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": false,
-                    "examples": [
-                        false
-                    ]
-                },
-                "useCustomPronouns": {
-                    "$id": "#/properties/customData/properties/useCustomPronouns",
-                    "type": "boolean",
-                    "title": "The useCustomPronouns schema",
                     "description": "An explanation about the purpose of this instance.",
                     "default": false,
                     "examples": [
