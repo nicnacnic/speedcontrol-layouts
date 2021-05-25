@@ -3,7 +3,7 @@
 $(() => {
 
 	loadFromSpeedControl();
-	
+
 	function loadFromSpeedControl() {
 		const speedcontrolBundle = 'nodecg-speedcontrol';
 
@@ -35,13 +35,8 @@ $(() => {
 			for (let team of currentTeamsData) {
 				for (let player of team.players) {
 					fadeText('#runner-name' + (i + 1), player.name, true);
-					let pronoun;
-					if (nodecg.bundleConfig.customData.useCustomPronouns) {
-						pronoun = '[' + player.customData.pronouns + ']';
-						if (pronoun === '[undefined]')
-							pronoun = '';
-					}
-					else
+					let pronoun = '[' + player.pronouns + ']';
+					if (pronoun === '[undefined]')
 						pronoun = '';
 					fadeText('#pronouns' + (i + 1), pronoun, true);
 
