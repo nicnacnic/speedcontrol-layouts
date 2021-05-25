@@ -1,11 +1,11 @@
 #omnibar {
-	background-color: #4B0141;
+	background-color: #3A3D18;
 	display: flex;
 	width: 1920px;
 	height: 82.5px;
 	border-style: solid;
 	border-width: 3px 0px 0px 0px;
-	border-color: #F2779D;
+	border-color: #A1AC67;
 }
 
 #omnibar > * {
@@ -36,25 +36,25 @@
 }
 
 #charity-logo {
-	background-color: #740365;
+	background-color: #4A511F;
 	padding: 0 0.5rem;
 }
 
 #donation-total {
-	background-color: #740365;
+	background-color: #4A511F;
 	padding: 0 0.75rem;
 	font-size: 36pt;
 	border-style: solid;
 	border-width: 0px 3px 0px 0px;
-	border-color: #F2779D;
+	border-color: #A1AC67;
 }
 
 #marathon-logo {
-	background-color: #970582;
+	background-color: #606A22;
 	padding: 0 1rem;
 	border-style: solid;
 	border-width: 0px 0px 0px 3px;
-	border-color: #F2779D;
+	border-color: #A1AC67;
 }
 
 #charity-logo img {

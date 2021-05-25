@@ -26,7 +26,7 @@ body {
 	text-align: center;
 	position: absolute;
 	
-	border: 3px solid transparent;
+	border: 2px solid white;
 }
 
 /* Runner name and pronouns panel. */
@@ -34,7 +34,7 @@ body {
 	position: absolute;
 	display: flex;
 	
-	border: 3px solid transparent;
+	border: 2px solid white;
 }
 
 .runner-name {
@@ -71,7 +71,7 @@ body {
 	position: absolute;
 	display: flex;
 	
-	border: 2px solid transparent;
+	border: 2px solid white;
 }
 
 /* Stopwatch image height. */
@@ -114,7 +114,7 @@ body {
 	text-align: center;
 	position: absolute;
 	
-	border: 3px solid transparent;
+	border: 2px solid white;
 }
 
 .timer_stopped {
@@ -136,5 +136,5 @@ body {
 	justify-content: center;
 	position: absolute;
 	
-	border: 3px solid transparent;
+	border: 2px solid white;
 }

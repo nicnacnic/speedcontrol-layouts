@@ -21,8 +21,8 @@
     height: 59px;
     line-height: 59px;
     position: absolute;
-    top: 850px;
-    left: -15px;
+    top: 856px;
+    left: -8px;
 	
 	padding-left: 15px;
 	padding-right: 15px;
@@ -38,7 +38,7 @@
 	top: 226px;
 	left: 1240px;
 	
-	border: 3px solid transparent;
+	border: 2px solid transparent;
 }
 
 /* Game panel. */
@@ -68,14 +68,14 @@
 	padding-left: 15px;
 	padding-right: 7.5px;
 	
-	border: 3px solid transparent;	
+	border: 2px solid transparent;	
 }
 
 /* Runner name dynamic text. */
 #up-next-info {
 	max-width: 450px;
 	
-	border: 3px solid transparent;	
+	border: 2px solid transparent;	
 }
 
 /* On Deck label. */
@@ -86,7 +86,7 @@
 	top: 519px;
 	left: 1320px;
 	
-	border: 3px solid transparent;
+	border: 2px solid transparent;
 }
 
 /* On deck game 1. */
@@ -102,7 +102,7 @@
 	padding-left: 15px;
 	padding-right: 7.5px;
 	
-	border: 3px solid transparent;
+	border: 2px solid transparent;
 }
 
 /* On deck info panel 1. */
@@ -116,14 +116,14 @@
 	padding-left: 15px;
 	padding-right: 7.5px;
 	
-	border: 3px solid transparent;
+	border: 2px solid transparent;
 }
 
 /* Runner name dynamic text. */
 #on-deck-info1 {
 	max-width: 345px;
 	
-	border: 3px solid transparent;	
+	border: 2px solid transparent;	
 }
 
 /* On deck game 2. */
@@ -139,7 +139,7 @@
 	padding-left: 10px;
 	padding-right: 5px;
 	
-	border: 3px solid transparent;
+	border: 2px solid transparent;
 }
 
 /* On deck info panel 2. */
@@ -153,14 +153,14 @@
 	padding-left: 15px;
 	padding-right: 7.5px;
 	
-	border: 3px solid transparent;
+	border: 2px solid transparent;
 }
 
 /* Runner name dynamic text. */
 #on-deck-info2 {
 	max-width: 345px;
 	
-	border: 3px solid transparent;	
+	border: 2px solid transparent;	
 }
 
 /* Info panel options. Don't change unless you know what you're doing! */

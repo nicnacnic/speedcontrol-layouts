@@ -1,9 +1,9 @@
 /* Runner and pronouns panel. */
 #runner-container1 {
-	width: 392px;
+	width: 398px;
 	height: 63px;
 	line-height: 63px;
-	left: 16px;
+	left: 14px;
 	top: 304px;
 	
 	padding-left: 15px;
@@ -18,8 +18,8 @@
 /* Game name panel. */
 #game-name {
 	width: 876px;
-	height: 84px;
-	line-height: 84px;
+	height: 86px;
+	line-height: 86px;
 	left: 999px;
 	top: 834px;
 		
@@ -42,19 +42,19 @@
 /* Timer panel. */
 #timer {
 	width: 524px;
-	height: 117px;
-	line-height: 117px;
-	left: 459px;
-	top: 846px;
+	height: 118px;
+	line-height: 118px;
+	left: 460px;
+	top: 849px;
 }
 
 /* Sponsor panel. */
 #sponsor-container {
 	width: 456px;
-	height: 622px;
-	line-height: 622px;
+	height: 624px;
+	line-height: 624px;
 	left: 0px;
-	top: 372px;
+	top: 371px;
 }
 
 /* Sponsor image max size. */

@@ -1,169 +1,107 @@
-'use strict';
+const speedcontrolBundle = 'nodecg-speedcontrol';
+const targetData = nodecg.Replicant('targetData');
+const pollData = nodecg.Replicant('pollData');
+const rewardData = nodecg.Replicant('rewardData');
+const campaignData = nodecg.Replicant('campaignData');
+const charityLogo = nodecg.Replicant('assets:omnibarCharityLogo');
+const marathonLogo = nodecg.Replicant('assets:omnibarMarathonLogo');
+const runDataArray = nodecg.Replicant('runDataArray', 'nodecg-speedcontrol');
+const runDataActiveRun = nodecg.Replicant('runDataActiveRun', 'nodecg-speedcontrol');
+const nextRuns = nodecg.Replicant('nextRuns');
 
-// Set static text.
-const OMNIBAR_STATIC = [
-	`<p class="is-single-line is-text-centered">
-		Horror(ible) Games 2021 - Refresh benefits the
-		<span style="color: #F2779D;">Heartland Animal Shelter</span>
-	</p>`,
-	`<p class="is-single-line is-text-centered">Donate at <span style="color: #F2779D;">https://tiltify.com/@gamesible/hig-2021-refresh</span></p>`
-];
+let host = '';
+let staticIndex, runIndex, targetIndex, pollIndex, rewardIndex;
+rewardIndex = pollIndex = targetIndex = runIndex = 10;
+staticIndex = 0;
 
-$(() => {
-	// Set host text.
-	function displayActiveHost(host) {
-		setOmnibarHtml(`<p class='is-single-line is-text-centered'>Your current host is <span style="color: #F2779D;">${host.customData.host}</span></p>`);
-	}
+let showHost = false;
+let showGoal = false;
 
-	// Set run text.
-	function displayActiveRuns(run) {
-		const players = getNamesForRun(run).join(', ');
+NodeCG.waitForReplicants(targetData, pollData, rewardData, campaignData, charityLogo, marathonLogo, runDataArray, runDataActiveRun).then(() => {
+	document.getElementById('charity-logo-img').setAttribute('src', charityLogo.value[0].url)
+	document.getElementById('marathon-logo-img').setAttribute('src', marathonLogo.value[0].url)
 
-		if (runIndex === 0)
-			setOmnibarHtml(`<p class='is-multiline is-text-centered'>UP NEXT: ${run.game}</p>
-			<p class='is-multiline is-text-centered'>${run.category} by ${players}</p>`);
+	// Please view the Github docs for valid values.
+	// Set static text.	
+	function staticText(index) {
+		if (index === 0)
+			setOmnibarHtml(`<p class="is-single-line is-text-centered">Horror(ible) Games 2021 - Winter Wasteland benefits the <span style="color: #A1AC67;">Heartland Animal Shelter</span></p>`,)
 		else
-			setOmnibarHtml(`<p class="is-multiline is-text-centered">ON DECK: ${run.game}</p>
-		<p class="is-multiline is-text-centered">${run.category} by ${players}</p>`);
+			setOmnibarHtml(`<p class="is-single-line is-text-centered">Donate at <span style="color: #A1AC67;">https://tiltify.com/@gamesible/hig-2021-refresh</span></p>`)
 	}
 
-	function displayActiveTargets(target) {
-
-		// Set target text for Tiltify.
-		if (nodecg.bundleConfig.donation.useTiltify) {
-			if (targetIndex === 0)
-				setOmnibarHtml(`<p class="is-multiline is-text-centered">NEXT INCENTIVE: ${target.name}</p>
-						<p class="is-multiline is-text-centered">$${target.totalAmountRaised} / $${target.amount}</p>`);
-			else
-				setOmnibarHtml(`<p class="is-multiline is-text-centered">LATER INCENTIVE: ${target.name}</p>
-						<p class="is-multiline is-text-centered">$${target.totalAmountRaised} / $${target.amount}</p>`);
-		}
-
-		// Set target text for Oengus.
-		else if (nodecg.bundleConfig.donation.useOengus) {
-			if (targetIndex === 0)
-				setOmnibarHtml(`<p class="is-multiline is-text-centered">NEXT INCENTIVE: ${target.name}</p>
-						<p class="is-multiline is-text-centered">$${target.currentAmount} / $${target.goal}</p>`);
-			else
-				setOmnibarHtml(`<p class="is-multiline is-text-centered">LATER INCENTIVE: ${target.name}</p>
-						<p class="is-multiline is-text-centered">$${target.currentAmount} / $${target.goal}</p>`);
-		}
-	}
-
-	function displayActivePolls(poll) {
-
-		// Set poll text for Tiltify. Note that the omnibar will only show the top 3 options to reduce clutter.
-		if (nodecg.bundleConfig.donation.useTiltify) {
-
-			// Set poll text with 3 options or more.
-			if (poll.options.length >= 3) {
-				const THREE_OPTIONS = [`<p class="is-multiline is-text-centered">NEXT POLL: ${poll.name}</p>
-								<p class="is-multiline is-text-centered">${poll.options[0].name}: $${poll.options[0].totalAmountRaised} vs. ${poll.options[1].name}: $${poll.options[1].totalAmountRaised}  vs. ${poll.options[2].name}: $${poll.options[2].totalAmountRaised}</p>`,
-				`<p class="is-multiline is-text-centered">LATER POLL: ${poll.name}</p>
-								<p class="is-multiline is-text-centered">${poll.options[0].name}: $${poll.options[0].totalAmountRaised} vs. ${poll.options[1].name}: $${poll.options[1].totalAmountRaised}  vs. ${poll.options[2].name}: $${poll.options[2].totalAmountRaised}</p>`];
-
-				if (pollIndex === 0)
-					setOmnibarHtml(THREE_OPTIONS[0]);
-				else
-					setOmnibarHtml(THREE_OPTIONS[1]);
-
-				// Set poll text with 2 options.
-			} else {
-				const TWO_OPTIONS = [`<p class="is-multiline is-text-centered">NEXT POLL: ${poll.name}</p>
-								<p class="is-multiline is-text-centered">${poll.options[0].name}: $${poll.options[0].totalAmountRaised} vs. ${poll.options[1].name}: $${poll.options[1].totalAmountRaised}</p>`,
-				`<p class="is-multiline is-text-centered">LATER POLL: ${poll.name}</p>
-								<p class="is-multiline is-text-centered">${poll.options[0].name}: $${poll.options[0].totalAmountRaised} vs. ${poll.options[1].name}: $${poll.options[1].totalAmountRaised}</p>`];
-
-				if (pollIndex === 0)
-					setOmnibarHtml(TWO_OPTIONS[0]);
-				else
-					setOmnibarHtml(TWO_OPTIONS[1]);
-			}
-		}
-
-		// Set poll text for Oengus. Note that the omnibar will only show the top 3 options to reduce clutter.
-		else if (nodecg.bundleConfig.donation.useOengus) {
-
-			// Set poll text with 3 bids or more.
-			if (poll.bids.length >= 3) {
-				const THREE_bids = [`<p class="is-multiline is-text-centered">NEXT POLL: ${poll.name}</p>
-								<p class="is-multiline is-text-centered">${poll.bids[0].name}: $${poll.bids[0].currentAmount} vs. ${poll.bids[1].name}: $${poll.bids[1].currentAmount}  vs. ${poll.bids[2].name}: $${poll.bids[2].currentAmount}</p>`,
-				`<p class="is-multiline is-text-centered">LATER POLL: ${poll.name}</p>
-								<p class="is-multiline is-text-centered">${poll.bids[0].name}: $${poll.bids[0].currentAmount} vs. ${poll.bids[1].name}: $${poll.bids[1].currentAmount}  vs. ${poll.bids[2].name}: $${poll.bids[2].currentAmount}</p>`];
-
-				if (pollIndex === 0)
-					setOmnibarHtml(THREE_bids[0]);
-				else
-					setOmnibarHtml(THREE_bids[1]);
-
-				// Set poll text with 2 bids.
-			} else {
-				const TWO_bids = [`<p class="is-multiline is-text-centered">NEXT POLL: ${poll.name}</p>
-								<p class="is-multiline is-text-centered">${poll.bids[0].name}: $${poll.bids[0].currentAmount} vs. ${poll.bids[1].name}: $${poll.bids[1].currentAmount}</p>`,
-				`<p class="is-multiline is-text-centered">LATER POLL: ${poll.name}</p>
-								<p class="is-multiline is-text-centered">${poll.bids[0].name}: $${poll.bids[0].currentAmount} vs. ${poll.bids[1].name}: $${poll.bids[1].currentAmount}</p>`];
-
-				if (pollIndex === 0)
-					setOmnibarHtml(TWO_bids[0]);
-				else
-					setOmnibarHtml(TWO_bids[1]);
-			}
-		}
-	}
-
-	function displayActiveRewards(reward) {
-
-		// Set rewards text for Tiltify.
-		if (nodecg.bundleConfig.donation.useTiltify) {
-			if (rewardIndex === 0)
-				setOmnibarHtml(`<p class="is-multiline is-text-centered">LATEST PRIZE: ${reward.name}</p>
-		<p class="is-multiline is-text-centered">Min. Donation: $${reward.amount}</p>`);
-			else
-				setOmnibarHtml(`<p class="is-multiline is-text-centered">LATEST PRIZE: ${reward.name}</p>
-		<p class="is-multiline is-text-centered">Min. Donation: $${reward.amount}</p>`);
-		}
-
-		// Set rewards text for Oengus.
-		else if (nodecg.bundleConfig.donation.useOengus) {
-			if (rewardIndex === 0)
-				setOmnibarHtml(`<p class="is-multiline is-text-centered">LATEST PRIZE: ${reward.name}</p>
-		<p class="is-multiline is-text-centered">Min. Donation: $${reward.amount}</p>`);
-			else
-				setOmnibarHtml(`<p class="is-multiline is-text-centered">LATEST PRIZE: ${reward.name}</p>
-		<p class="is-multiline is-text-centered">Min. Donation: $${reward.amount}</p>`);
-		}
+	// Host text.
+	function hostText() {
+		setOmnibarHtml(`<p class='is-single-line is-text-centered'>Your current host is <span style="color: #A1AC67;">${host}</span></p>`)
 	}
 
 
-	// Set milestone text.
-	function displayActiveMilestone(milestone) {
+	// Run text.
+	function runText(index) {
+		const players = getNamesForRun(nextRuns.value.data[index]).join(', ');
+		if (index === 0)
+			setOmnibarHtml(`<p class='is-multiline is-text-centered'>UP NEXT: ${nextRuns.value.data[index].game}</p> <p class='is-multiline is-text-centered'>${nextRuns.value.data[index].category} by ${players}</p>`)
+		else
+			setOmnibarHtml(`<p class="is-multiline is-text-centered">ON DECK: ${nextRuns.value.data[index].game}</p> <p class="is-multiline is-text-centered">${nextRuns.value.data[index].category} by ${players}</p>`)
+	}
 
-		setOmnibarHtml(`<p class="is-multiline is-text-centered">EVENT GOAL: $${milestone}</p>`);
+	// Targets text.
+	function targetText(index) {
+		if (index === 0)
+			setOmnibarHtml(`<p class="is-multiline is-text-centered">NEXT INCENTIVE: ${targetData.value.data[index].name}</p> <p class="is-multiline is-text-centered">$${targetData.value.data[index].currentAmount} / $${targetData.value.data[index].targetAmount}</p>`)
+		else
+			setOmnibarHtml(`<p class="is-multiline is-text-centered">LATER INCENTIVE: ${targetData.value.data[index].name}</p> <p class="is-multiline is-text-centered">$${targetData.value.data[index].currentAmount} / $${targetData.value.data[index].targetAmount}</p>`)
+	}
+
+	// Polls text.
+	function pollText(index) {
+
+		// 1 option.
+		if (pollData.value.data[index].options.length === 1)
+			setOmnibarHtml(`<p class="is-multiline is-text-centered">NEXT BIDWAR: ${pollData.value.data[index].name}</p> <p class="is-multiline is-text-centered">${pollData.value.data[index].options[0].name}: $${pollData.value.data[index].options[0].currentAmount}</p>`)
+
+		// 2 options.
+		else if (pollData.value.data[index].options.length === 2)
+			setOmnibarHtml(`<p class="is-multiline is-text-centered">NEXT BIDWAR: ${pollData.value.data[index].name}</p> <p class="is-multiline is-text-centered">${pollData.value.data[index].options[0].name}: $${pollData.value.data[index].options[0].currentAmount} vs. ${pollData.value.data[index].options[1].name}: $${pollData.value.data[index].options[1].currentAmount}</p>`)
+
+		// 3 or more options.
+		else if (pollData.value.data[index].options.length >= 3)
+			setOmnibarHtml(`<p class="is-multiline is-text-centered">NEXT BIDWAR: ${pollData.value.data[index].name}</p> <p class="is-multiline is-text-centered">${pollData.value.data[index].options[0].name}: $${pollData.value.data[index].options[0].currentAmount} vs. ${pollData.value.data[index].options[1].name}: $${pollData.value.data[index].options[1].currentAmount} vs. ${pollData.value.data[index].options[2].name}: $${pollData.value.data[index].options[2].currentAmount}</p>`)
+	}
+
+	// Rewards text.
+	function rewardText(index) {
+		if (index === 0)
+			setOmnibarHtml(`<p class="is-multiline is-text-centered">LATEST PRIZE: ${rewardData.value.data[index].name}</p> <p class="is-multiline is-text-centered">Min. Donation: $${rewardData.value.data[index].minDonation}</p>`)
+		else
+			setOmnibarHtml(`<p class="is-multiline is-text-centered">LATEST PRIZE: ${rewardData.value.data[index].name}</p> <p class="is-multiline is-text-centered">Min. Donation: $${rewardData.value.data[index].minDonation}</p>`)
+	}
+
+	// Goals text.
+	function goalText() {
+		setOmnibarHtml(`<p class="is-multiline is-text-centered">EVENT GOAL: $${campaignData.value.targetAmount}</p>`)
 	}
 
 	// Do not edit below this line (unless you know what you're doing!)
-	let URL;
-	if (nodecg.bundleConfig.donation.useOengus) {
-		if (nodecg.bundleConfig.donation.oengusUseSandbox)
-			URL = `https://sandbox.oengus.io/api/marathon/${nodecg.bundleConfig.donation.oengusMarathon}/incentive?withLocked=true&withUnapproved=false`;
+	runDataActiveRun.on('change', (newVal, oldVal) => {
+		let runs = [];
+		let currentRunIndex = runDataArray.value.findIndex(runData => runData.id === newVal.id);
+		for (let i = 1; i <= nodecg.bundleConfig.omnibar.numRuns; i++) {
+			if (!runDataArray.value[currentRunIndex + i]) {
+				break;
+			}
+			runs.push(runDataArray.value[currentRunIndex + i]);
+		}
+		nextRuns.value = { dataLength: runs.length, data: runs };
+
+		if (nodecg.bundleConfig.omnibar.showHost && newVal.customData.host !== undefined)
+			host = newVal.customData.host;
 		else
-			URL = `https://oengus.io/api/marathon/${nodecg.bundleConfig.donation.oengusMarathon}/incentive?withLocked=true&withUnapproved=false`
-	}
-
-	let activeRun, activeTarget, activePoll, activeReward, activeMilestone, activeHost;
-	activeRun = activeTarget = activePoll = activeReward = activeMilestone = activeHost = [];
-
-	let staticIndex, runIndex, targetIndex, pollIndex, rewardIndex, omnibarText;
-	rewardIndex = pollIndex = targetIndex = runIndex = 100;
-	staticIndex = omnibarText = 0;
-
-	let showHost = true;
-	let showGoal = false;
-
-	let runDataActiveRun = nodecg.Replicant('runDataActiveRun', speedcontrolBundle);
-	let runDataArray = nodecg.Replicant('runDataArray', speedcontrolBundle);
-
-	NodeCG.waitForReplicants(runDataActiveRun, runDataArray).then(runTickerText);
+			host = '';
+	});
+	
+	setOmnibarHtml(staticText[0])
+	runTickerText();
 
 	function setOmnibarHtml(html) {
 		$('#omnibar-content').fadeOut(nodecg.bundleConfig.omnibar.fadeOutTime, () => {
@@ -171,254 +109,37 @@ $(() => {
 		});
 	}
 
-	function loadRuns(run) {
-		let nextRuns = [];
-
-		if (run && runDataArray) {
-			let currentRunIndex = runDataArray.value.findIndex(runData => runData.id === run.id);
-
-			if (nodecg.bundleConfig.omnibar.showHost)
-				activeHost = runDataArray.value[currentRunIndex];
-
-			for (let i = 1; i <= nodecg.bundleConfig.omnibar.numRuns; i++) {
-				if (!runDataArray.value[currentRunIndex + i]) {
-					break;
-				}
-				nextRuns.push(runDataArray.value[currentRunIndex + i]);
-			}
-		}
-		return nextRuns;
-	}
-
-	function loadDataFromApi() {
-		let j = 0;
-		activeTarget = [];
-		activePoll = [];
-		activeReward = [];
-		if (nodecg.bundleConfig.omnibar.showTargets && omnibarText < 3 && nodecg.bundleConfig.donation.useTiltify) {
-			$.ajax({
-				url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}/challenges`,
-				type: 'get',
-				headers: {
-					'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
-				},
-				dataType: 'json',
-				success: (response) => {
-					for (let i = 0; i < response.data.length; i++) {
-						if (response.data[i].active && response.data[i].totalAmountRaised < response.data[i].amount) {
-							activeTarget[j] = response.data[i];
-							j++;
-						}
-					}
-					if (activeTarget.length > 0)
-						activeTarget.sort((a, b) => a.endsAt - b.endsAt);
-					else {
-						omnibarText++;
-						loadDataFromApi();
-					}
-				}
-			});
-		}
-		else if (nodecg.bundleConfig.omnibar.showTargets && omnibarText < 3 && nodecg.bundleConfig.donation.useOengus) {
-			$.ajax({
-				url: URL,
-				type: 'get',
-				dataType: 'json',
-				success: (response) => {
-					for (let i = 0; i < response.length; i++) {
-						if (!response[i].locked && response[i].currentAmount < response[i].goal) {
-							activeTarget[j] = response[i];
-							j++;
-						}
-					}
-					if (activeTarget.length > 0) { }
-					else {
-						omnibarText++;
-						loadDataFromApi();
-					}
-				}
-			});
-		}
-		else if (nodecg.bundleConfig.omnibar.showPolls && omnibarText < 4 && nodecg.bundleConfig.donation.useTiltify) {
-			$.ajax({
-				url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}/polls`,
-				type: 'get',
-				headers: {
-					'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
-				},
-				dataType: 'json',
-				success: (response) => {
-					for (let i = 0; i < response.data.length; i++) {
-						if (response.data[i].active) {
-							activePoll[j] = response.data[i];
-							j++;
-						}
-					}
-					if (activePoll.length > 0) {
-						for (let i = 0; i <= activePoll.length - 1; i++) {
-							let pollToSort = activePoll[i].options;
-							pollToSort.sort((a, b) => b.totalAmountRaised - a.totalAmountRaised);
-							activePoll[i].options = pollToSort;
-						}
-					}
-					else {
-						omnibarText++;
-						loadDataFromApi();
-					}
-				}
-			});
-		}
-		else if (nodecg.bundleConfig.omnibar.showPolls && omnibarText < 4 && nodecg.bundleConfig.donation.useOengus) {
-			$.ajax({
-				url: URL,
-				type: 'get',
-				dataType: 'json',
-				success: (response) => {
-					for (let i = 0; i < response.length; i++) {
-						if (!response[i].locked && response[i].bidWar && response[i].currentAmount < response[i].goal) {
-							activePoll[j] = response[i];
-							j++;
-						}
-					}
-					if (activePoll.length > 0) {
-						for (let i = 0; i <= activePoll.length - 1; i++) {
-							let pollToSort = activePoll[i].bids;
-							pollToSort.sort((a, b) => b.currentAmount - a.currentAmount);
-							activePoll[i].bids = pollToSort;
-						}
-					}
-					else {
-						omnibarText++;
-						loadDataFromApi();
-					}
-				}
-			});
-		}
-		else if (nodecg.bundleConfig.omnibar.showRewards && omnibarText < 5 && nodecg.bundleConfig.donation.useTiltify) {
-			$.ajax({
-				url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}/rewards`,
-				type: 'get',
-				headers: {
-					'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
-				},
-				dataType: 'json',
-				success: (response) => {
-					for (let i = 0; i < response.data.length; i++) {
-						if (response.data[i].active) {
-							activeReward[j] = response.data[i];
-							j++;
-						}
-					}
-					if (activeReward.length > 0)
-						activeReward.sort((a, b) => a.endsAt - b.endsAt);
-					else {
-						omnibarText++;
-						loadDataFromApi();
-					}
-				}
-			});
-		}
-		// Will be enabled when Oengus supports prizes.
-		/* else if (nodecg.bundleConfig.omnibar.showRewards && omnibarText < 5 && nodecg.bundleConfig.donation.useOengus) {
-			$.ajax({
-				url: URL,
-				type: 'get',
-				dataType: 'json',
-				success: (response) => {
-					for (let i = 0; i < response.length; i++) {
-						if (!response[i].locked && response[i].currentAmount < response[i].goal) {
-							activeReward[j] = response[i];
-							j++;
-						}
-					}
-					if (activeReward.length > 0) {}
-					else {
-						omnibarText++;
-						loadDataFromApi();
-					}
-				}
-			});
-		} */
-		else if (nodecg.bundleConfig.omnibar.showGoal && omnibarText < 6 && nodecg.bundleConfig.donation.useTiltify) {
-			$.ajax({
-				url: `https://tiltify.com/api/v3/campaigns/${nodecg.bundleConfig.donation.tiltifyCampaignID}`,
-				type: 'get',
-				headers: {
-					'Authorization': `Bearer ${nodecg.bundleConfig.donation.tiltifyAuthToken}`
-				},
-				dataType: 'json',
-				success: (response) => {
-					activeMilestone = response.data.fundraiserGoalAmount;
-				}
-			});
-		}
-	}
-
 	function runTickerText() {
-		runDataActiveRun.on('change', (newVal, oldVal) => {
-			activeRun = loadRuns(newVal);
-		});
-
-		runDataArray.on('change', (newVal, oldVal) => {
-			activeRun = loadRuns(runDataActiveRun.value);
-		});
-
-		if (nodecg.bundleConfig.omnibar.dwellTime < 2000) {
-			setOmnibarHtml(`<p class="is-single-line is-text-centered">Dwell time is too fast! Minimum 2000.</p>`);
-			exit();
-		}
-		else
-			setOmnibarHtml(`<p class="is-single-line is-text-centered">Omnibar is starting...</p>`);
-
 		setInterval(() => {
-			if (nodecg.bundleConfig.omnibar.showHost && activeHost.customData.host !== undefined && showHost) {
-				omnibarText = 1;
-				displayActiveHost(activeHost);
+			if (showHost && nodecg.bundleConfig.omnibar.showHost && host !== '') {
+				hostText();
 				showHost = false;
 			}
-			else if (runIndex < (nodecg.bundleConfig.omnibar.numRuns && activeRun.length)) {
-				omnibarText = 2;
-				displayActiveRuns(activeRun[runIndex]);
+			else if (runIndex < nextRuns.value.dataLength && runIndex < nodecg.bundleConfig.omnibar.numRuns) {
+				runText(runIndex);
 				runIndex++;
-				if (runIndex === (nodecg.bundleConfig.omnibar.numRuns || activeRun.length)) {
-					loadDataFromApi();
-				}
 			}
-			else if (targetIndex < (nodecg.bundleConfig.omnibar.numTargets && activeTarget.length)) {
-				omnibarText = 3;
-				displayActiveTargets(activeTarget[targetIndex]);
+			else if (targetIndex < targetData.value.dataLength && targetIndex < nodecg.bundleConfig.omnibar.numTargets) {
+				targetText(targetIndex);
 				targetIndex++;
-				if (targetIndex === (nodecg.bundleConfig.omnibar.numTargets || activeTarget.length)) {
-					loadDataFromApi();
-				}
 			}
-			else if (pollIndex < (nodecg.bundleConfig.omnibar.numPolls && activePoll.length)) {
-				omnibarText = 4;
-				displayActivePolls(activePoll[pollIndex]);
+			else if (pollIndex < pollData.value.dataLength && pollIndex < nodecg.bundleConfig.omnibar.numPolls) {
+				pollText(pollIndex);
 				pollIndex++;
-				if (pollIndex === (nodecg.bundleConfig.omnibar.numPolls || activePoll.length)) {
-					loadDataFromApi();
-				}
 			}
-			else if (rewardIndex < (nodecg.bundleConfig.omnibar.numRewards && activeReward.length)) {
-				omnibarText = 5;
-				displayActiveRewards(activeReward[rewardIndex]);
+			else if (rewardIndex < rewardData.value.dataLength && rewardIndex < nodecg.bundleConfig.omnibar.numRewards) {
+				rewardText(rewardIndex)
 				rewardIndex++;
-				if (rewardtIndex === (nodecg.bundleConfig.omnibar.numRewards || activeReward.length)) {
-					loadDataFromApi();
-				}
 			}
-			else if (nodecg.bundleConfig.omnibar.showGoal && nodecg.bundleConfig.donation.useTiltify && showGoal && activeMilestone !== undefined) {
-				omnibarText = 6;
-				displayActiveMilestone(activeMilestone);
+			else if (showGoal && nodecg.bundleConfig.omnibar.showGoal) {
+				goalText()
 				showGoal = false;
 			}
 			else {
-				omnibarText = 0;
-				setOmnibarHtml(OMNIBAR_STATIC[staticIndex]);
+				staticText(staticIndex)
 				staticIndex++;
 
-				if (staticIndex >= OMNIBAR_STATIC.length) {
+				if (staticIndex > staticText.length) {
 					rewardIndex = pollIndex = targetIndex = runIndex = staticIndex = 0;
 					showHost = true;
 					showGoal = true;

@@ -1,14 +1,10 @@
-'use strict';
-
 let index = 0;
+let SPONSOR_IMGS;
 
 $(() => {
-	let SPONSOR_IMGS = [];
-	for (let i = 0; i < nodecg.bundleConfig.sponsor.sponsorImages.length; i++)
-	{
-		SPONSOR_IMGS.push(nodecg.bundleConfig.sponsor.sponsorImages[i]);
-	}
-	runImages();
+	SPONSOR_IMGS = nodecg.Replicant('assets:sponsorContainer');
+	
+	NodeCG.waitForReplicants(SPONSOR_IMGS).then(() => runImages());
 
 	$('#sponsor-img').on('load', () => {
 		$('#sponsor-img').fadeIn(nodecg.bundleConfig.sponsor.fadeInTime);
@@ -21,21 +17,15 @@ $(() => {
 			}, 500);
 		});
 	}
-
-	function incrementIndex() {
-		if (index < SPONSOR_IMGS.length - 1) {
-			index += 1;
-		} else {
-			index = 0;
-		}
-	}
-
+	
 	function runImages() {
-		updateSponsorImage(SPONSOR_IMGS[index]);
-
+		let index = 1;
+		updateSponsorImage(SPONSOR_IMGS.value[0].url)
 		setInterval(() => {
-			incrementIndex();
-			updateSponsorImage(SPONSOR_IMGS[index]);
-		}, nodecg.bundleConfig.sponsor.dwellTime);
+			if (index === SPONSOR_IMGS.value.length)
+				index = 0;
+			updateSponsorImage(SPONSOR_IMGS.value[index].url)
+			index++;
+		}, nodecg.bundleConfig.sponsor.dwellTime)
 	}
 });
