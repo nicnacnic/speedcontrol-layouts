@@ -8,6 +8,8 @@ A bundle of easy-to-use NodeCG layouts for marathons to use.
 [![Discord](https://img.shields.io/badge/-Join%20the%20Discord!-brightgreen?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/A34Qpfe)
 
 ## About
+*This is a bundle for [NodeCG](https://github.com/nodecg/nodecg); if you do not understand what that is, we advise you read their website first for more information.*
+
 speedcontrol-layouts was the layout pack used during Horror(ible) Games 2021 - Heartbreak, tweaked to make creating layouts easier.
 
 ### Features
@@ -17,44 +19,35 @@ speedcontrol-layouts was the layout pack used during Horror(ible) Games 2021 - H
 - Various Photoshop files to easily make your own layouts
 
 ## Requirements
-Administrator privileges will be needed to install. Some of these programs use the command line, you should be comfortable using Command Prompt or similar.
-- [Git For Windows](https://git-scm.com/downloads)
-- [Node.JS](https://nodejs.org/en/)
 - [NodeCG](https://github.com/nodecg/nodecg)
-- [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol)
+- [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol) (please use the build branch)
 
-For [NodeCG Speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol), you need to use the dev branch with a version commited after February 1st, 2021 for custom data to work correctly. If you do not know how to build the files, I have a compatible build that you can use found [here](https://github.com/nicnacnic/nodecg-speedcontrol). Note that this version will get more out-of-date over time as I don't plan to update it.
-
-Additionally, although not required, some basic knowledge of Java/Javascript, HTML and CSS will make it easier to customize these layouts.
+Additionally, although not required, some basic knowledge of Javascript, HTML and CSS will make it easier to customize these layouts to your liking.
 
 ## Installation
-To install this layout pack, navigate to your root NodeCG folder using Command Prompt or similar (I like [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)). Then, type in the following command and press enter.
+Navigate to your root NodeCG folder, then run `nodecg install nicnacnic/speedcontrol-layouts`. After the installation is complete, type `nodecg defaultconfig speedcontrol-layouts` to generate the config file.
 
-```nodecg install nicnacnic/speedcontrol-layouts```
+Now you're ready to customize! For guidance, the [wiki](https://github.com/nicnacnic/speedcontrol-layouts/wiki) has everything covered!
 
-After the installation completes, type the following command to create a config file, found in ```<path_to_nodecg>/cfg```.
-
-```nodecg defaultconfig speedcontrol-layouts```
-
-To start NodeCG, navigate to the main NodeCG folder in Command Prompt, then type `nodecg start`.
-
-For a full user and customization guide, the [wiki](https://github.com/nicnacnic/speedcontrol-layouts/wiki) will have everything you need to know! 
-
-## Using These Layouts
-This layout pack includes many layouts with many different aspect ratios, including 4:3 and 16:9 (from 1p to 4p), GB, GBA, DS, 3DS, intermission, and a customizable omnibar. Photoshop files are also included for easy editing, from simply changing the colors to rearranging elements in your layout. And detailed documentation ensures you know what you're doing.
+## Usage
+Use this layout pack as you normally would use a NodeCG graphic. Included are many layouts with many configurations, including 4:3 and 16:9 (from 1p to 4p), GB, GBA, DS, 3DS, intermission, interview, and a customizable omnibar. Photoshop files are also included for easy editing, from simply changing the colors to rearranging elements in your layout. They can be found in `<path_to_nodecg>/bundles/speedcontrol-layouts/graphics/img/photoshop`.
 
 If you end up using speedcontrol-layouts during your marathon/event, it would be greatly appreciated if you included the repository name and author in your end credits. Thank you!
 
 ## Commission Work
 I'm now offering commission work! For a small fee, I can make custom layouts, modifications to the dashboard, managing NodeCG and more! Prices usually range from $20 to $200. For more information visit [https://www.nicnacnic.com/commission-work](https://www.nicnacnic.com/commission-work) or contact me through Discord.
 
-## Restreamer Dashboard
-If you need a easy-to-use dashboard for your restreamers, check out my custom-built UI that works well with these layouts! [nicnacnic/restreamer-dashboard](https://github.com/nicnacnic/restreamer-dashboard)
+## Other Bundles
+- [obs-control](https://github.com/nicnacnic/obs-control) A simple NodeCG bundle to control an instance of OBS.
+- [speedcontrol-tweetr](https://github.com/nicnacnic/speedcontrol-tweetr) Control Twitter right from your NodeCG dashboard!
+- [nodecg-dacbot](https://github.com/nicnacnic/nodecg-dacbot) A Discord bot to capture and stream voice channel audio to a specified audio device and show VC users.
 
-## Suggestions And Support
-These layouts are still being developed, so if you come across any bugs or have any suggestions, please let me know by checking the list of [known bugs](https://github.com/nicnacnic/speedcontrol-layouts/wiki), and creating an issue in the [issue tracker](https://github.com/nicnacnic/speedcontrol-layouts/issues) if it isn't listed.
+## Contributing
+There is a lot of inefficient code in this bundle. If you can optimize the code, or add new features, submit a pull request! Before you do, please make sure to **test your code**.
 
-If you're having issues installing or using these layouts, I can be reached through my [Discord](https://discord.gg/A34Qpfe) server. Be aware that I'm usually busy with multiple marathons and other projects so I might not be able to help you right away.
+Bugs or glitches should first be checked against the list of [known bugs](https://github.com/nicnacnic/speedcontrol-layouts/wiki), then by creating an issue in the [issue tracker](https://github.com/nicnacnic/speedcontrol-layouts/issues). Suggestions are always welcome!
+
+If you're having issues or just want to chat, I can be reached on my [Discord](https://discord.gg/A34Qpfe) server.
 
 ## Special Thanks
 BashPrime, for making the Calithon Spooktacular layouts which this layout pack is based on.
