@@ -1,17 +1,20 @@
+'use strict';
 $(() => {
-	const timer = nodecg.Replicant('timer', 'nodecg-speedcontrol');
-	let timerElem = $('#timer');
+	loadFromSpeedControl();
 
-	NodeCG.waitForReplicants(timer).then(() => {
+	function loadFromSpeedControl() {
+		var speedcontrolBundle = 'nodecg-speedcontrol';
+		var timerElem = $('#timer');
+		var timer = nodecg.Replicant('timer', speedcontrolBundle);
 		timer.on('change', (newVal, oldVal) => {
-			console.log(timer);
-			updateTimer(newVal, oldVal);
+			if (newVal)
+				updateTimer(newVal, oldVal);
 		});
-	})
 
-	function updateTimer(newVal, oldVal) {
-		if (oldVal) timerElem.toggleClass('timer_' + oldVal.state, false);
-		timerElem.toggleClass('timer_' + newVal.state, true);
-		timerElem.html(newVal.time);
+		function updateTimer(newVal, oldVal) {
+			if (oldVal) timerElem.toggleClass('timer_' + oldVal.state, false);
+			timerElem.toggleClass('timer_' + newVal.state, true);
+			timerElem.html(newVal.time);
+		}
 	}
 });
