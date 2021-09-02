@@ -9,6 +9,9 @@ const MEDAL_IMGS = [
 	'img/common/medal_none.png'
 ];
 
+let runDataActiveRun = nodecg.Replicant('runDataActiveRun', speedcontrolBundle);
+let timer = nodecg.Replicant('timer', speedcontrolBundle);
+
 let i = 0;
 let runData;
 let completedID = [];
@@ -16,7 +19,6 @@ $(() => {
 	loadFromSpeedControl();
 
 	function loadFromSpeedControl() {
-		let runDataActiveRun = nodecg.Replicant('runDataActiveRun', speedcontrolBundle);
 		runDataActiveRun.on('change', (newVal, oldVal) => {
 			if (newVal) {
 				runData = newVal;
@@ -27,6 +29,7 @@ $(() => {
 
 	function resetMedals() {
 		for (let k = 1; k < 5; k++) {
+			$('#finalTime' + k).text('');
 			$('#medals' + (k) + '-img').attr('src', MEDAL_IMGS[3]);
 		}
 		completedID = [];
@@ -41,7 +44,7 @@ $(() => {
 				try {
 					if (runData.teams.length > 1 && newVal.teamFinishTimes[team.id].state === 'completed' && !completedID.includes(team.id)) {
 						completedID.push(team.id);
-						setMedal(team.id)
+						setMedal()
 					}
 					if (newVal.milliseconds < oldVal.milliseconds && newVal.milliseconds === 0)
 						resetMedals();
@@ -54,12 +57,12 @@ $(() => {
 		});
 	}
 
-	function setMedal(id) {
+	function setMedal() {
 		let n = 0;
 		for (let i = 0; i < completedID.length; i++) {
 			for (let k = 0; k < runData.teams.length; k++) {
 				if (runData.teams[k].id === completedID[i]) {
-					console.log(n);
+					$('#finalTime' + (k + 1)).text(timer.value.teamFinishTimes[runData.teams[k].id].time);
 					$('#medals' + (k + 1) + '-img').attr('src', MEDAL_IMGS[n]);
 					n++;
 				}
@@ -68,11 +71,10 @@ $(() => {
 	}
 
 	function removeMedal(id) {
-		console.log(completedID);
 		let n = completedID.indexOf(id);
 		completedID.splice(n, 1);
-		console.log(completedID);
 		for (let k = 1; k < 5; k++) {
+			$('#finalTime' + k).text('');
 			$('#medals' + (k) + '-img').attr('src', MEDAL_IMGS[3]);
 		}
 		setMedal(completedID[0]);

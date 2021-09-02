@@ -1,34 +1,50 @@
 {
   "name": "speedcontrol-layouts",
-  "version": "1.2.9",
+  "version": "1.3.0",
   "description": "A bundle of easy-to-use NodeCG layouts for marathons to use.",
   "homepage": "https://github.com/nicnacnic/speedcontrol-layouts",
   "author": "nicnacnic",
   "license": "MIT",
   "nodecg": {
     "compatibleRange": "^1.6.0",
-	"bundleDependencies": {
+    "bundleDependencies": {
       "nodecg-speedcontrol": "^2.2.0"
     },
     "dependencies": {
-		"node-fetch": "^2.6.1"
-	},
-	"assetCategories": [
+      "node-fetch": "^2.6.1"
+    },
+    "assetCategories": [
       {
         "name": "sponsorContainer",
         "title": "Sponsor Images",
-        "allowedTypes": ["jpg", "jpeg", "gif", "png"]
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png"
+        ]
       },
-	  {
+      {
         "name": "omnibarMarathonLogo",
         "title": "Omnibar Marathon Logo",
-        "allowedTypes": ["jpg", "jpeg", "gif", "png"]
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png"
+        ]
       },
-	  {
+      {
         "name": "omnibarCharityLogo",
         "title": "Omnibar Charity Logo",
-        "allowedTypes": ["jpg", "jpeg", "gif", "png"]
-      }],
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png"
+        ]
+      }
+    ],
     "graphics": [
       {
         "file": "4x3_1p.html",
@@ -80,12 +96,12 @@
         "width": 1920,
         "height": 1080
       },
-	  {
+      {
         "file": "DS.html",
         "width": 1920,
         "height": 1080
       },
-	  {
+      {
         "file": "3DS.html",
         "width": 1920,
         "height": 1080

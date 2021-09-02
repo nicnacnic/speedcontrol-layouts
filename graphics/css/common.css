@@ -44,6 +44,8 @@ body {
 	float: left;
 	vertical-align: middle;
 	width: 100%;
+
+	border: 2px solid white;
 }
 
 .pronouns {
@@ -58,11 +60,23 @@ body {
 	margin-right: 7px;
 	vertical-align: middle;	
 	float: right;
+
+	border: 2px solid white;
 }
 
 .medals-img {
 	width: 30px;
 	height: 30px;
+
+	border: 2px solid white;
+}
+
+.finalTime {
+	font-size: 30pt;
+	font-stretch: semi-condensed;
+	vertical-align: middle;
+
+	border: 2px solid white;
 }
 
 /* Category and estimate panel. */
