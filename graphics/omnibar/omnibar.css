@@ -1,0 +1,111 @@
+:root {
+
+    /* Omnibar CSS variables. */
+    --omnibar-foreground-color: #FFFFFF;
+    --omnibar-background-color: #2A276B;
+    --omnibar-border-color: #6D91CB;
+    --omnibar-font-family: 'Oswald Regular';
+
+    --donation-foreground-color: #FFFFFF;
+    --donation-background-color: #33459C;
+
+    --marathon-logo-foreground-color: #FFFFFF;
+    --marathon-logo-background-color: #33459C;
+
+    --content-primary-color: #FFFFFF;
+    --content-secondary-color: #6D91CB;
+}
+
+
+body {
+    margin: 0;
+    font-family: var(--omnibar-font-family);
+}
+
+#omnibar {
+    color: var(--omnibar-foreground-color);
+    background-color: var(--omnibar-background-color);
+    display: flex;
+    width: 1920px;
+    height: 82px;
+    border-top: 2px solid var(--omnibar-border-color);
+}
+
+#omnibarContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-top: -2px;
+}
+
+#omnibarContent p {
+    margin: 0;
+}
+
+.singleLine {
+    font-size: 24pt;
+}
+
+.multiLine {
+    font-size: 18pt;
+    margin: 0;
+}
+
+.primary {
+    color: var(--content-primary-color);
+}
+
+.secondary {
+    color: var(--content-secondary-color);
+}
+
+#leftContainer {
+    color: var(--donation-foreground-color);
+    background-color: var(--donation-background-color);
+    font-size: 36pt;
+    border-right: 2px solid var(--omnibar-border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#charityLogo {
+    height: 100%;
+    padding: 0 0.5rem;
+    vertical-align: middle;
+}
+
+#donationTotal {
+    width: 100%;
+    height: 100%;
+    padding: 0 0.75rem;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 6px;
+}
+
+#marathonLogo {
+    color: var(--marathon-logo-foreground-color);
+    background-color: var(--marathon-logo-background-color);
+    border-left: 2px solid var(--omnibar-border-color);
+    align-self: flex-end;
+    height: 100%;
+}
+
+#charityLogo img {
+    height: 60px;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+#marathonLogo img {
+    margin-top: 3px;
+    height: 76px;
+    vertical-align: middle;
+    object-fit: contain;
+}
