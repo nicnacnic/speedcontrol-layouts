@@ -1,6 +1,6 @@
 {
   "name": "speedcontrol-layouts",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "A bundle of easy-to-use NodeCG layouts for marathons to use.",
   "homepage": "https://github.com/nicnacnic/speedcontrol-layouts",
   "author": "nicnacnic",
@@ -9,9 +9,6 @@
     "compatibleRange": "^1.6.0",
     "bundleDependencies": {
       "nodecg-speedcontrol": "^2.2.0"
-    },
-    "dependencies": {
-      "node-fetch": "^2.6.1"
     },
     "assetCategories": [
       {
@@ -57,16 +54,6 @@
         "height": 1080
       },
       {
-        "file": "4x3_3p.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "4x3_4p.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
         "file": "16x9_1p.html",
         "width": 1920,
         "height": 1080
@@ -77,17 +64,7 @@
         "height": 1080
       },
       {
-        "file": "16x9_3p.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
         "file": "16x9_4p.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "GB.html",
         "width": 1920,
         "height": 1080
       },
@@ -97,33 +74,19 @@
         "height": 1080
       },
       {
-        "file": "DS.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "3DS.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
         "file": "Intermission.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "Interview.html",
+        "file": "omnibar/omnibar.html",
         "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "Omnibar.html",
-        "width": 1920,
-        "height": 82.5
+        "height": 82
       }
     ]
   },
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "eventsource": "^2.0.2",
+    "node-fetch": "2.6.1"
   }
 }
