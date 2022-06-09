@@ -1,22 +1,398 @@
 {
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
     "$id": "http://example.com/example.json",
-    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
     "default": {
-        "donation": {
-            "useTiltify": false,
-            "tiltifyCampaignID": 123456,
-            "tiltifyAuthToken": "<auth_token>",
-            "useOengus": false,
-            "oengusMarathon": "<marathon_shortname>",
-            "oengusUseSandbox": false,
-            "refreshTime": 10000
+    "tiltify": {
+        "active": false,
+        "campaignID": 123456,
+        "authToken": "",
+        "refreshTime": 20000
+    },
+    "oengus": {
+        "active": false,
+        "marathonShort": "<marathon_shortname>",
+        "useSandbox": false,
+        "refreshTime": 20000
+    },
+    "indiethonTracker": {
+        "active": true,
+        "eventShort": "",
+        "apiUrl": "https://example.com/api",
+        "token": ""
+    },
+    "customData": {
+        "useCustomHost": true
+    },
+    "sponsor": {
+        "fadeInTime": 1100,
+        "dwellTime": 15000,
+        "fadeOutTime": 750
+    },
+    "omnibar": {
+        "showHost": true,
+        "showGoal": true,
+        "numRuns": 2,
+        "numTargets": 2,
+        "numBidwars": 2,
+        "numPrizes": 2,
+        "fadeInTime": 1500,
+        "dwellTime": 10000,
+        "fadeOutTime": 750
+    }
+},
+    "title": "Root Schema",
+    "required": [
+        "tiltify",
+        "oengus",
+        "indiethonTracker",
+        "customData",
+        "sponsor",
+        "omnibar"
+    ],
+    "properties": {
+        "tiltify": {
+            "type": "object",
+            "default": {},
+            "title": "The tiltify Schema",
+            "required": [
+                "active",
+                "campaignID",
+                "authToken",
+                "refreshTime"
+            ],
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The active Schema",
+                    "examples": [
+                        false
+                    ]
+                },
+                "campaignID": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The campaignID Schema",
+                    "examples": [
+                        123456
+                    ]
+                },
+                "authToken": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The authToken Schema",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "refreshTime": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The refreshTime Schema",
+                    "examples": [
+                        20000
+                    ]
+                }
+            },
+            "examples": [{
+                "active": false,
+                "campaignID": 123456,
+                "authToken": "",
+                "refreshTime": 20000
+            }]
+        },
+        "oengus": {
+            "type": "object",
+            "default": {},
+            "title": "The oengus Schema",
+            "required": [
+                "active",
+                "marathonShort",
+                "useSandbox",
+                "refreshTime"
+            ],
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The active Schema",
+                    "examples": [
+                        false
+                    ]
+                },
+                "marathonShort": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The marathonShort Schema",
+                    "examples": [
+                        "\u003cmarathon_shortname\u003e"
+                    ]
+                },
+                "useSandbox": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The useSandbox Schema",
+                    "examples": [
+                        false
+                    ]
+                },
+                "refreshTime": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The refreshTime Schema",
+                    "examples": [
+                        20000
+                    ]
+                }
+            },
+            "examples": [{
+                "active": false,
+                "marathonShort": "\u003cmarathon_shortname\u003e",
+                "useSandbox": false,
+                "refreshTime": 20000
+            }]
+        },
+        "indiethonTracker": {
+            "type": "object",
+            "default": {},
+            "title": "The indiethonTracker Schema",
+            "required": [
+                "active",
+                "eventShort",
+                "apiUrl",
+                "token"
+            ],
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The active Schema",
+                    "examples": [
+                        true
+                    ]
+                },
+                "eventShort": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The eventShort Schema",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "apiUrl": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The apiUrl Schema",
+                    "examples": [
+                        "https://example.com/api"
+                    ]
+                },
+                "token": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The token Schema",
+                    "examples": [
+                        ""
+                    ]
+                }
+            },
+            "examples": [{
+                "active": true,
+                "eventShort": "",
+                "apiUrl": "https://example.com/api",
+                "token": ""
+            }]
         },
         "customData": {
-            "useCustomHost": false
+            "type": "object",
+            "default": {},
+            "title": "The customData Schema",
+            "required": [
+                "useCustomHost"
+            ],
+            "properties": {
+                "useCustomHost": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The useCustomHost Schema",
+                    "examples": [
+                        true
+                    ]
+                }
+            },
+            "examples": [{
+                "useCustomHost": true
+            }]
+        },
+        "sponsor": {
+            "type": "object",
+            "default": {},
+            "title": "The sponsor Schema",
+            "required": [
+                "fadeInTime",
+                "dwellTime",
+                "fadeOutTime"
+            ],
+            "properties": {
+                "fadeInTime": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The fadeInTime Schema",
+                    "examples": [
+                        1100
+                    ]
+                },
+                "dwellTime": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The dwellTime Schema",
+                    "examples": [
+                        15000
+                    ]
+                },
+                "fadeOutTime": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The fadeOutTime Schema",
+                    "examples": [
+                        750
+                    ]
+                }
+            },
+            "examples": [{
+                "fadeInTime": 1100,
+                "dwellTime": 15000,
+                "fadeOutTime": 750
+            }]
+        },
+        "omnibar": {
+            "type": "object",
+            "default": {},
+            "title": "The omnibar Schema",
+            "required": [
+                "showHost",
+                "showGoal",
+                "numRuns",
+                "numTargets",
+                "numBidwars",
+                "numPrizes",
+                "fadeInTime",
+                "dwellTime",
+                "fadeOutTime"
+            ],
+            "properties": {
+                "showHost": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The showHost Schema",
+                    "examples": [
+                        true
+                    ]
+                },
+                "showGoal": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The showGoal Schema",
+                    "examples": [
+                        true
+                    ]
+                },
+                "numRuns": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The numRuns Schema",
+                    "examples": [
+                        2
+                    ]
+                },
+                "numTargets": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The numTargets Schema",
+                    "examples": [
+                        2
+                    ]
+                },
+                "numBidwars": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The numBidwars Schema",
+                    "examples": [
+                        2
+                    ]
+                },
+                "numPrizes": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The numPrizes Schema",
+                    "examples": [
+                        2
+                    ]
+                },
+                "fadeInTime": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The fadeInTime Schema",
+                    "examples": [
+                        1500
+                    ]
+                },
+                "dwellTime": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The dwellTime Schema",
+                    "examples": [
+                        10000
+                    ]
+                },
+                "fadeOutTime": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The fadeOutTime Schema",
+                    "examples": [
+                        750
+                    ]
+                }
+            },
+            "examples": [{
+                "showHost": true,
+                "showGoal": true,
+                "numRuns": 2,
+                "numTargets": 2,
+                "numBidwars": 2,
+                "numPrizes": 2,
+                "fadeInTime": 1500,
+                "dwellTime": 10000,
+                "fadeOutTime": 750
+            }]
+        }
+    },
+    "examples": [{
+        "tiltify": {
+            "active": false,
+            "campaignID": 123456,
+            "authToken": "",
+            "refreshTime": 20000
+        },
+        "oengus": {
+            "active": false,
+            "marathonShort": "\u003cmarathon_shortname\u003e",
+            "useSandbox": false,
+            "refreshTime": 20000
+        },
+        "indiethonTracker": {
+            "active": true,
+            "eventShort": "",
+            "apiUrl": "https://example.com/api",
+            "token": ""
+        },
+        "customData": {
+            "useCustomHost": true
         },
         "sponsor": {
             "fadeInTime": 1100,
-            "dwellTime": 10000,
+            "dwellTime": 15000,
             "fadeOutTime": 750
         },
         "omnibar": {
@@ -24,359 +400,11 @@
             "showGoal": true,
             "numRuns": 2,
             "numTargets": 2,
-            "numPolls": 2,
-            "numRewards": 2,
-            "fadeInTime": 1100,
+            "numBidwars": 2,
+            "numPrizes": 2,
+            "fadeInTime": 1500,
             "dwellTime": 10000,
             "fadeOutTime": 750
         }
-    },
-    "description": "The root schema comprises the entire JSON document.",
-    "examples": [
-        {
-            "donation": {
-                "useTiltify": false,
-                "tiltifyCampaignID": 123456,
-                "tiltifyAuthToken": "<auth_token>",
-                "useOengus": false,
-                "oengusMarathon": "<marathon_shortname>",
-                "oengusUseSandbox": false,
-                "refreshTime": 10000
-            },
-            "customData": {
-                "useCustomHost": false
-            },
-            "sponsor": {
-                "fadeInTime": 1100,
-                "dwellTime": 10000,
-                "fadeOutTime": 750
-            },
-            "omnibar": {
-                "showHost": true,
-                "showGoal": true,
-                "numRuns": 2,
-                "numTargets": 2,
-                "numPolls": 2,
-                "numRewards": 2,
-                "fadeInTime": 1100,
-                "dwellTime": 10000,
-                "fadeOutTime": 750
-            }
-        }
-    ],
-    "required": [
-        "donation",
-        "customData",
-        "sponsor",
-        "omnibar"
-    ],
-    "title": "The root schema",
-    "type": "object",
-    "properties": {
-        "donation": {
-            "$id": "#/properties/donation",
-            "type": "object",
-            "title": "The donation schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": {},
-            "examples": [
-                {
-                    "useTiltify": false,
-                    "tiltifyCampaignID": 123456,
-                    "tiltifyAuthToken": "<auth_token>",
-                    "useOengus": false,
-                    "oengusMarathon": "<marathon_shortname>",
-                    "oengusUseSandbox": false,
-                    "refreshTime": 10000
-                }
-            ],
-            "required": [
-                "useTiltify",
-                "tiltifyCampaignID",
-                "tiltifyAuthToken",
-                "useOengus",
-                "oengusMarathon",
-                "oengusUseSandbox",
-                "refreshTime"
-            ],
-            "properties": {
-                "useTiltify": {
-                    "$id": "#/properties/donation/properties/useTiltify",
-                    "type": "boolean",
-                    "title": "The useTiltify schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": false,
-                    "examples": [
-                        false
-                    ]
-                },
-                "tiltifyCampaignID": {
-                    "$id": "#/properties/donation/properties/tiltifyCampaignID",
-                    "type": "integer",
-                    "title": "The tiltifyCampaignID schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        123456
-                    ]
-                },
-                "tiltifyAuthToken": {
-                    "$id": "#/properties/donation/properties/tiltifyAuthToken",
-                    "type": "string",
-                    "title": "The tiltifyAuthToken schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": "",
-                    "examples": [
-                        "<auth_token>"
-                    ]
-                },
-                "useOengus": {
-                    "$id": "#/properties/donation/properties/useOengus",
-                    "type": "boolean",
-                    "title": "The useOengus schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": false,
-                    "examples": [
-                        false
-                    ]
-                },
-                "oengusMarathon": {
-                    "$id": "#/properties/donation/properties/oengusMarathon",
-                    "type": "string",
-                    "title": "The oengusMarathon schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": "",
-                    "examples": [
-                        "<marathon_shortname>"
-                    ]
-                },
-                "oengusUseSandbox": {
-                    "$id": "#/properties/donation/properties/oengusUseSandbox",
-                    "type": "boolean",
-                    "title": "The oengusUseSandbox schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": false,
-                    "examples": [
-                        false
-                    ]
-                },
-                "refreshTime": {
-                    "$id": "#/properties/donation/properties/refreshTime",
-                    "type": "integer",
-                    "title": "The refreshTime schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        10000
-                    ]
-                }
-            },
-            "additionalProperties": true
-        },
-        "customData": {
-            "$id": "#/properties/customData",
-            "type": "object",
-            "title": "The customData schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": {},
-            "examples": [
-                {
-                    "useCustomHost": false
-                }
-            ],
-            "required": [
-                "useCustomHost"
-            ],
-            "properties": {
-                "useCustomHost": {
-                    "$id": "#/properties/customData/properties/useCustomHost",
-                    "type": "boolean",
-                    "title": "The useCustomHost schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": false,
-                    "examples": [
-                        false
-                    ]
-                }
-            },
-            "additionalProperties": true
-        },
-        "sponsor": {
-            "$id": "#/properties/sponsor",
-            "type": "object",
-            "title": "The sponsor schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": {},
-            "examples": [
-                {
-                    "fadeInTime": 1100,
-                    "dwellTime": 10000,
-                    "fadeOutTime": 750
-                }
-            ],
-            "required": [
-                "fadeInTime",
-                "dwellTime",
-                "fadeOutTime"
-            ],
-            "properties": {
-                "fadeInTime": {
-                    "$id": "#/properties/sponsor/properties/fadeInTime",
-                    "type": "integer",
-                    "title": "The fadeInTime schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        1100
-                    ]
-                },
-                "dwellTime": {
-                    "$id": "#/properties/sponsor/properties/dwellTime",
-                    "type": "integer",
-                    "title": "The dwellTime schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        10000
-                    ]
-                },
-                "fadeOutTime": {
-                    "$id": "#/properties/sponsor/properties/fadeOutTime",
-                    "type": "integer",
-                    "title": "The fadeOutTime schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        750
-                    ]
-                }
-            },
-            "additionalProperties": true
-        },
-        "omnibar": {
-            "$id": "#/properties/omnibar",
-            "type": "object",
-            "title": "The omnibar schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": {},
-            "examples": [
-                {
-                    "showHost": true,
-                    "showGoal": true,
-                    "numRuns": 2,
-                    "numTargets": 2,
-                    "numPolls": 2,
-                    "numRewards": 2,
-                    "fadeInTime": 1100,
-                    "dwellTime": 10000,
-                    "fadeOutTime": 750
-                }
-            ],
-            "required": [
-                "showHost",
-                "showGoal",
-                "numRuns",
-                "numTargets",
-                "numPolls",
-                "numRewards",
-                "fadeInTime",
-                "dwellTime",
-                "fadeOutTime"
-            ],
-            "properties": {
-                "showHost": {
-                    "$id": "#/properties/omnibar/properties/showHost",
-                    "type": "boolean",
-                    "title": "The showHost schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": false,
-                    "examples": [
-                        true
-                    ]
-                },
-                "showGoal": {
-                    "$id": "#/properties/omnibar/properties/showGoal",
-                    "type": "boolean",
-                    "title": "The showGoal schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": false,
-                    "examples": [
-                        true
-                    ]
-                },
-                "numRuns": {
-                    "$id": "#/properties/omnibar/properties/numRuns",
-                    "type": "integer",
-                    "title": "The numRuns schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        2
-                    ]
-                },
-                "numTargets": {
-                    "$id": "#/properties/omnibar/properties/numTargets",
-                    "type": "integer",
-                    "title": "The numTargets schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        2
-                    ]
-                },
-                "numPolls": {
-                    "$id": "#/properties/omnibar/properties/numPolls",
-                    "type": "integer",
-                    "title": "The numPolls schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        2
-                    ]
-                },
-                "numRewards": {
-                    "$id": "#/properties/omnibar/properties/numRewards",
-                    "type": "integer",
-                    "title": "The numRewards schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        2
-                    ]
-                },
-                "fadeInTime": {
-                    "$id": "#/properties/omnibar/properties/fadeInTime",
-                    "type": "integer",
-                    "title": "The fadeInTime schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        1100
-                    ]
-                },
-                "dwellTime": {
-                    "$id": "#/properties/omnibar/properties/dwellTime",
-                    "type": "integer",
-                    "title": "The dwellTime schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        10000
-                    ]
-                },
-                "fadeOutTime": {
-                    "$id": "#/properties/omnibar/properties/fadeOutTime",
-                    "type": "integer",
-                    "title": "The fadeOutTime schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0,
-                    "examples": [
-                        750
-                    ]
-                }
-            },
-            "additionalProperties": true
-        }
-    },
-    "additionalProperties": true
+    }]
 }
