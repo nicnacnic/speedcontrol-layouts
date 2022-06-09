@@ -157,7 +157,7 @@ module.exports = (nodecg) => {
 			targets: targetArray,
 			bidwars: bidwarArray,
 			prizes: prizeArray,
-			runs: [];
+			runs: [],
 		};
 		
 		if (runDataArray.value.length > 0) {
