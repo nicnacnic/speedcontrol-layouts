@@ -160,7 +160,7 @@ module.exports = (nodecg) => {
 			runs: [],
 		};
 		
-		if (runDataArray.value.length > 0) {
+		if (runDataArray.value.length > 0 && runDataActiveRun.value !== undefined) {
 			let index = runDataArray.value.findIndex(x => x.id === runDataActiveRun.value.id);
 			data.value.runs = JSON.parse(JSON.stringify(runDataArray.value.slice(index + 1, index + 6)));
 		}
