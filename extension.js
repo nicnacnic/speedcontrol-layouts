@@ -144,8 +144,6 @@ module.exports = (nodecg) => {
 
 		prizeArray = prizeArray.sort((a, b) => { new Date(a.endTime) - new Date(b.endTime) });
 
-		let index = runDataArray.value.findIndex(x => x.id === runDataActiveRun.value.id);
-
 		data.value = {
 			event: {
 				name: eventData.name,
@@ -159,10 +157,13 @@ module.exports = (nodecg) => {
 			targets: targetArray,
 			bidwars: bidwarArray,
 			prizes: prizeArray,
-			runs: JSON.parse(JSON.stringify(runDataArray.value.slice(index + 1, index + 6))),
+			runs: [];
 		};
-
-		console.log('data updated')
+		
+		if (runDataArray.value.length > 0) {
+			let index = runDataArray.value.findIndex(x => x.id === runDataActiveRun.value.id);
+			data.value.runs = JSON.parse(JSON.stringify(runDataArray.value.slice(index + 1, index + 6))),
+		}
 	};
 }
 
