@@ -16,7 +16,7 @@
         "refreshTime": 20000
     },
     "indiethonTracker": {
-        "active": true,
+        "active": false,
         "eventShort": "",
         "apiUrl": "https://example.com/api",
         "token": ""
