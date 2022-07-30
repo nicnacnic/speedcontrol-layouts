@@ -20,7 +20,7 @@ module.exports = (nodecg) => {
 		case (nodecg.bundleConfig.tiltify.active): useTiltify(); break;
 		case (nodecg.bundleConfig.oengus.active): useOengus(); break;
 		case (nodecg.bundleConfig.indiethonTracker.active): useTracker(); break;
-		default: nodecg.log.error('No data source selected! Please select a data source in the config.'); process.exit();
+		default: nodecg.log.warn('No data source selected! Donations and incentives won\'t show up on layouts.'); break;
 	}
 
 	async function useTiltify() {
