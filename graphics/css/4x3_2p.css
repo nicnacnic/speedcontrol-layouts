@@ -1,8 +1,8 @@
 /* Runner and pronouns panel. */
 .runner-container {
-	width: 534px;
-	height: 66px;
-	line-height: 66px;
+	width: 428px;
+	height: 60px;
+	line-height: 60px;
 	
 	padding-left: 10px;
 	padding-right: 10px;
@@ -21,17 +21,17 @@
 
 /* Player 2 info position. */
 #runner-container2 {
-	left: 1000px;
+	left: 1108px;
 	top: 732px;
 }
 
 /* Game name panel. */
 #game-name {
-	width: 506px;
-	height: 90px;
-	line-height: 90px;
-	left: 1030px;
-	top: 818px;
+	width: 426px;
+	height: 80px;
+	line-height: 80px;
+	left: 1108px;
+	top: 830px;
 	
 	padding-left: 10px;
 	padding-right: 10px;
@@ -39,11 +39,11 @@
 
 /* Category and estimate panel. */
 #info-container {
-	width: 506px;
-	height: 58px;
-	line-height: 58px;
-	left: 1030px;
-	top: 910px;
+	width: 426px;
+	height: 48px;
+	line-height: 48px;
+	left: 1108px;
+	top: 914px;
 	
 	padding-left: 10px;
 	padding-right: 10px;
@@ -51,9 +51,23 @@
 
 /* Timer panel. */
 #timer {
-	width: 524px;
-	height: 116px;
-	line-height: 116px;
+	width: 448px;
+	height: 118px;
+	line-height: 118px;
 	left: 362px;
-	top: 834px;
+	top: 835px;
+}
+
+/* Sponsor panel. */
+#sponsor-container {
+	width: 294px;
+	height: 275px;
+	line-height: 275px;
+	left: 812px;
+	top: 718px;
+}
+
+/* Sponsor image max size. */
+img#sponsor-img {
+	max-width: 60%;
 }

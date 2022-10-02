@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0F143C;
+            width: 1920px;
+            height: 1080px;
+        }
+
+        .logo {
+            position: absolute;
+            left: 163px;
+            top: -300px;
+            z-index: 30;
+        }
+
+        @keyframes rotateObject {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <script>
+        const backgroundImg = ['./blueTriangle.png', './pinkPlus.png', './yellowPlus.png'];
+        loop()
+        function loop() {
+            setTimeout(() => {
+                randomPoint(true)
+            }, randomInt(200, 800))
+        }
+
+        for (let i = 0; i < 21; i++) {
+            randomPoint(false);
+        }
+
+        function randomPoint(doLoop) {
+            let points = getPoints();
+            let pointA = randomInt(0, 1);
+            let pointB;
+            switch (pointA) {
+                case 1: pointB = 0; break;
+                default: pointB = 1; break;
+            }
+            let time = randomInt(40, 250) / 10;
+            let size = randomInt(16, 28);
+            let animationTime = randomInt(3, 100) / 10;
+            let div = document.createElement('img');
+            div.style.position = 'absolute';
+            div.style.left = points[pointA].x + 'px';
+            div.style.top = points[pointA].y + 'px';
+            div.style.width = `${size}px`;
+            div.style.height = `${size}px`;
+            div.style.transition = `all ${time}s linear`;
+            div.style.animation = `rotateObject ${animationTime}s linear 0s infinite forwards`;
+            div.src = `${backgroundImg[randomInt(0, 2)]}`;
+            document.body.appendChild(div);
+            setTimeout(() => {
+                div.style.left = points[pointB].x + 'px';
+                div.style.top = points[pointB].y + 'px';
+            }, 100)
+            if (doLoop) loop()
+
+            setTimeout(() => div.remove(), time * 1000 + 100)
+        }
+
+        function getPoints() {
+            let from = {};
+            let to = {};
+            let pointA = randomInt(-560, 660);
+            let pointB = randomInt(-560, 660);
+            if (randomInt(0, 1) === 1) {
+                switch (true) {
+                    case (pointA > 0): from.x = pointA; from.y = -20; break;
+                    default: from.x = -20; from.y = Math.abs(pointA); break;
+                }
+
+                switch (true) {
+                    case (pointB > 0): to.x = 1940 - pointA; to.y = 1100; break;
+                    default: to.x = 1940; to.y = 1100 - Math.abs(pointB); break;
+                }
+            }
+            else {
+                switch (true) {
+                    case (pointA > 0): from.x = 1940 - pointA; from.y = -20; break;
+                    default: from.x = 1940; from.y = Math.abs(pointA); break;
+                }
+
+                switch (true) {
+                    case (pointB > 0): to.x = pointA; to.y = 1100; break;
+                    default: to.x = -20; to.y = 1100 - Math.abs(pointB); break;
+                }
+            }
+            return [from, to];
+        }
+
+        function randomInt(min, max) { return Math.floor(Math.random() * (max - min + 1) + min) }
+    </script>
+</body>
+
+</html>

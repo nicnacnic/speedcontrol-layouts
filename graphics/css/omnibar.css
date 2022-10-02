@@ -1,11 +1,13 @@
+body {
+	font-family: 'Oswald Regular';
+}
+
 #omnibar {
-	background-color: #3A3D18;
+	background-color: #2A276B;
 	display: flex;
 	width: 1920px;
-	height: 82.5px;
-	border-style: solid;
-	border-width: 3px 0px 0px 0px;
-	border-color: #A1AC67;
+	height: 82px;
+	border-top: 2px solid #6D91CB;
 }
 
 #omnibar > * {
@@ -20,47 +22,42 @@
 
 #omnibar-content * {
 	display: initial;
+	margin-top: -5px;
+	text-align: center;
 }
 
-.is-single-line {
+.singleLine {
 	font-size: 24pt;
 }
 
-.is-multiline {
+.multiLine {
 	font-size: 18pt;
 	margin: 0;
 }
 
-.is-text-centered {
-	margin: 0 auto;
-}
-
 #charity-logo {
-	background-color: #4A511F;
-	padding: 0 0.5rem;
+	background-color: #33459C;
+	padding: 0 1rem;
+	padding-right: 0.5rem;	
 }
 
 #donation-total {
-	background-color: #4A511F;
+	background-color: #33459C;
 	padding: 0 0.75rem;
 	font-size: 36pt;
-	border-style: solid;
-	border-width: 0px 3px 0px 0px;
-	border-color: #A1AC67;
+	border-right: 2px solid #6D91CB;
 }
 
 #marathon-logo {
-	background-color: #606A22;
+	background-color: #33459C;
 	padding: 0 1rem;
-	border-style: solid;
-	border-width: 0px 0px 0px 3px;
-	border-color: #A1AC67;
+	border-left: 2px solid #6D91CB;
 }
 
 #charity-logo img {
-	height: 68px;
+	height: 72px;
 }
 
 #marathon-logo img {
-	height: 82px;
+	height: 108px;
 }

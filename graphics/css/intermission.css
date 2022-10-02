@@ -1,13 +1,13 @@
 /* Donation Total panel. */
-#donation-total {
+#donationTotal {
 	font-size: 108pt;
 	font-stretch: semi-condensed;
-	width: 420px;
-	line-height: 180px;
+	width: 366px;
+	line-height: 176px;
 	text-align: center;
 	position: absolute;
-	top: 30px;
-	left: 1392px;
+	top: 50px;
+	left: 1370px;
 	
 	padding-left: 15px;
 	padding-right: 15px;
@@ -17,12 +17,12 @@
 
 /* Host panel. */
 #host-container {
-    font-size: 30pt;
+    font-size: 26pt;
     height: 59px;
     line-height: 59px;
     position: absolute;
-    top: 856px;
-    left: -8px;
+    top: 850px;
+    left: 0;
 	
 	padding-left: 15px;
 	padding-right: 15px;
@@ -35,8 +35,8 @@
 	font-size: 24pt;
 	width: 642px;
 	position: absolute;
-	top: 226px;
-	left: 1240px;
+	top: 240px;
+	left: 1225px;
 	
 	border: 2px solid transparent;
 }
@@ -45,11 +45,11 @@
 #up-next-game {
 	font-size: 60pt;
 	font-stretch: semi-condensed;
-	width: 650px;
-	line-height: 132px;
+	width: 670px;
+	line-height: 142px;
 	position: absolute;
-	top: 270px;
-	left: 1240px;
+	top: 280px;
+	left: 1220px;
 	
 	padding-left: 15px;
 	padding-right: 15px;
@@ -60,9 +60,9 @@
 /* Up Next info panel. */
 #up-next-info-container {
 	width: 596px;
-	line-height: 65px;
+	line-height: 58px;
 	position: absolute;
-	top: 405px;
+	top: 428px;
 	left: 1296px;
 	
 	padding-left: 15px;
@@ -83,8 +83,8 @@
 	font-size: 24pt;
 	width: 573px;
 	position: absolute;
-	top: 519px;
-	left: 1320px;
+	top: 509px;
+	left: 1325px;
 	
 	border: 2px solid transparent;
 }
@@ -96,7 +96,7 @@
 	width: 572px;
 	line-height: 110px;
 	position: absolute;
-	top: 561px;
+	top: 551px;
 	left: 1320px;
 	
 	padding-left: 15px;
@@ -107,11 +107,11 @@
 
 /* On deck info panel 1. */
 #on-deck-info-container1 {
-	width: 515px;
+	width: 505px;
 	line-height: 55px;
 	position: absolute;
-	top: 675px;
-	left: 1377px;
+	top: 665px;
+	left: 1387px;
 	
 	padding-left: 15px;
 	padding-right: 7.5px;
@@ -133,7 +133,7 @@
 	width: 572px;
 	line-height:110px;
 	position: absolute;
-	top: 792px;
+	top: 780px;
 	left: 1320px;
 	
 	padding-left: 10px;
@@ -144,11 +144,11 @@
 
 /* On deck info panel 2. */
 #on-deck-info-container2 {
-	width: 515px;
+	width: 505px;
 	line-height: 55px;
 	position: absolute;
-	top: 906px;
-	left: 1377px;
+	top: 896px;
+	left: 1387px;
 	
 	padding-left: 15px;
 	padding-right: 7.5px;
@@ -196,4 +196,8 @@
 .estimate-label img {
 	height: 27pt;
 	width: 100%;
+}
+
+#up-next-info-container .info {
+	font-size: 26pt;
 }

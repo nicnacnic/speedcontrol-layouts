@@ -1,22 +1,28 @@
 /* Font settings. */
 @font-face {
-	font-family: 'PoorStory Regular';
-	src: url('../fonts/PoorStory-Regular.ttf');
+	font-family: 'Whitestone Regular';
+	src: url('../fonts/Whitestone.otf');
 }
 
 @font-face {
-	font-family: 'MeriendaOne Regular';
-	src: url('../fonts/MeriendaOne-Regular.ttf');
+	font-family: 'VCR OSD Regular';
+	src: url('../fonts/VCROSDMono.ttf');
+}
+
+@font-face {
+	font-family: 'Oswald Regular';
+	src: url('../fonts/Oswald-Regular.ttf');
 }
 /* You can add an unlimited amount of fonts by copy/pasting @font-face! */
 
 /* General settings. */
 body {
-	font-family: 'PoorStory Regular';
+	font-family: 'Whitestone Regular';
 	color: #f9f9f9;
 	width: 1920px;
 	height: 1080px;
 	position: absolute;
+	margin: 0;
 }
 
 /* Game name panel. */
@@ -38,45 +44,46 @@ body {
 }
 
 .runner-name {
-	margin-right: 15px;
-	font-size: 30pt;
+	font-size: 26pt;
 	font-stretch: semi-condensed;
 	float: left;
 	vertical-align: middle;
 	width: 100%;
 
-	border: 2px solid white;
+	border: 2px solid transparent;
 }
 
 .pronouns {
-	font-size: 27pt;
+	font-size: 18pt;
 	vertical-align: middle;
 	text-align: right;
 	float: right;
 }
 
 .medals {
-	margin-top: 10px;
-	margin-right: 7px;
+	margin-top: 8px;
 	vertical-align: middle;	
 	float: right;
 
-	border: 2px solid white;
+	border: 2px solid transparent;
 }
 
 .medals-img {
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 
-	border: 2px solid white;
+	border: 2px solid transparent;
 }
 
 .finalTime {
-	font-size: 30pt;
+	height: 100%;
+	font-size: 18pt;
+	margin-right: 5px;
 	font-stretch: semi-condensed;
 	vertical-align: middle;
+	color: #50ff50;
 
-	border: 2px solid white;
+	border: 2px solid transparent;
 }
 
 /* Category and estimate panel. */
@@ -90,7 +97,7 @@ body {
 
 /* Stopwatch image height. */
 #estimate-label img {
-	height: 21pt;
+	height: 18pt;
 }
 
 #category {
@@ -113,18 +120,20 @@ body {
 #estimate-label {
 	display: inline-block;
 	vertical-align: middle;
-	margin-top: 5px;
+	margin-left: 10px;
+	margin-right: -5px;
+	margin-top: 2px;
 }
 
 #estimate {
 	display: inline-block;
-	margin-top: 3px;
 }
 
 /* Timer panel. */
 #timer {
-	font-family: 'MeriendaOne Regular';
-	font-size: 72pt;
+	font-family: 'VCR OSD Regular';
+	font-stretch: expanded;
+	font-size: 76pt;
 	text-align: center;
 	position: absolute;
 	

@@ -4,12 +4,12 @@ let countUp;
 
 NodeCG.waitForReplicants(data).then(() => {
 
-	data.on('change', (newVal) => handleCountUp(newVal.event.total, newVal.event.currency));
+	data.on('change', (newVal) => handleCountUp(newVal.event.total));
 
-	function handleCountUp(amount, currency) {
+	function handleCountUp(amount) {
 		if (!countUp) {
 			countUp = new CountUp('donationTotal', amount, amount, 0, 0.75, {
-				prefix: currency,
+				prefix: '$'
 			});
 			countUp.start();
 		} else countUp.update(amount);

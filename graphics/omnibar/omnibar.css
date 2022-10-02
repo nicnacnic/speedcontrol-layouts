@@ -16,6 +16,10 @@
     --content-secondary-color: #6D91CB;
 }
 
+html {
+    margin: 0;
+}
+
 
 body {
     margin: 0;
@@ -98,9 +102,10 @@ body {
 }
 
 #charityLogo img {
-    height: 60px;
+    height: 70px;
     vertical-align: middle;
     object-fit: contain;
+    margin-bottom: 3px;
 }
 
 #marathonLogo img {

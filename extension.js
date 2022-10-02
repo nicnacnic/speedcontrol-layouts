@@ -12,6 +12,7 @@ module.exports = (nodecg) => {
 		if (oldVal) {
 			let index = runDataArray.value.findIndex(x => x.id === newVal.id);
 			data.value.runs = JSON.parse(JSON.stringify(runDataArray.value.slice(index + 1, index + 6)))
+			if (newVal.customData && newVal.customData.host) data.value.host = newVal.customData.host;	
 		}
 	})
 
@@ -115,8 +116,8 @@ module.exports = (nodecg) => {
 		let bidwarArray = [];
 		for (const incentive of incentiveData) {
 			let name = `${incentive.run.game} ${incentive.name}`;
-			if (incentive.type === 'target' && incentive.active && new Date(incentive.endTime) > new Date()) targetArray.push({ name: name, total: incentive.total, goal: incentive.goal, endTime: incentive.endTime });
-			else if (incentive.type === 'bidwar' && incentive.active && new Date(incentive.endTime) > new Date()) bidwarArray.push({ name: name, options: incentive.options, endTime: incentive.endTime });
+			if (incentive.type === 'target' && incentive.active && !incentive.completed && new Date(incentive.endTime) > new Date()) targetArray.push({ name: name, total: incentive.total, goal: incentive.goal, endTime: incentive.endTime });
+			else if (incentive.type === 'bidwar' && incentive.active && !incentive.completed && new Date(incentive.endTime) > new Date()) bidwarArray.push({ name: name, options: incentive.options, endTime: incentive.endTime });
 		}
 
 		targetArray = targetArray.sort((a, b) => { new Date(a.endTime) - new Date(b.endTime) });
@@ -144,26 +145,18 @@ module.exports = (nodecg) => {
 
 		prizeArray = prizeArray.sort((a, b) => { new Date(a.endTime) - new Date(b.endTime) });
 
-		data.value = {
-			event: {
-				name: eventData.name,
-				charity: eventData.charity.name,
-				url: nodecg.bundleConfig.indiethonTracker.apiUrl,
-				total: eventData.stats.total,
-				goal: eventData.targetAmount,
-				currency: details.currencySymbol,
-				timestamp: Date.now(),
-			},
-			targets: targetArray,
-			bidwars: bidwarArray,
-			prizes: prizeArray,
-			runs: [],
+		data.value.event = {
+			name: eventData.name,
+			charity: eventData.charity.name,
+			url: nodecg.bundleConfig.indiethonTracker.apiUrl,
+			total: eventData.stats.total,
+			goal: eventData.targetAmount,
+			currency: details.currencySymbol,
+			timestamp: Date.now(),
 		};
-
-		if (runDataArray.value.length > 0 && runDataActiveRun.value !== undefined) {
-			let index = runDataArray.value.findIndex(x => x.id === runDataActiveRun.value.id);
-			data.value.runs = JSON.parse(JSON.stringify(runDataArray.value.slice(index + 1, index + 6)));
-		}
+		data.value.targets = targetArray;
+		data.value.bidwars = bidwarArray;
+		data.value.prizes = prizeArray;
 	};
 
 	async function getOengusData() {
@@ -220,26 +213,18 @@ module.exports = (nodecg) => {
 
 		// prizeArray = prizeArray.sort((a, b) => { new Date(a.endTime) - new Date(b.endTime) });
 
-		data.value = {
-			event: {
-				name: details.name,
-				charity: details.supportedCharity,
-				url: '',
-				total: details.donationsTotal,
-				goal: 0,
-				currency: currencies[details.donationCurrency],
-				timestamp: Date.now(),
-			},
-			targets: [],
-			bidwars: [],
-			prizes: [],
-			runs: [],
+		data.value.event = {
+			name: details.name,
+			charity: details.supportedCharity,
+			url: '',
+			total: details.donationsTotal,
+			goal: 0,
+			currency: currencies[details.donationCurrency],
+			timestamp: Date.now(),
 		};
-
-		if (runDataArray.value.length > 0 && runDataActiveRun.value !== undefined) {
-			let index = runDataArray.value.findIndex(x => x.id === runDataActiveRun.value.id);
-			data.value.runs = JSON.parse(JSON.stringify(runDataArray.value.slice(index + 1, index + 6)));
-		}
+		data.value.targets = [];
+		data.value.bidwars = [];
+		data.value.prizes = [];
 	}
 }
 

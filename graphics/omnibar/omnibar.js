@@ -26,9 +26,8 @@ async function setText(type, index, value) {
 	try {
 		if (type === "message") {
 			text.message = [
-				`<p class="singleLine">Indiethon 2022 is benefiting <span class="singleLine secondary">Puppies Behind Bars</span></p>`,
-				`<p class="singleLine">Donate at <span class="singleLine secondary">donate.indiethon.live</span></p>`,
-				`<p class="singleLine">Check out our merchandise at<span class="singleLine secondary"> store.indiethon.live</span></p>`,
+				`<p class="singleLine">Indiethon Fall Follies 2022 is raising money for <span class="singleLine secondary">Caudwell Children</span></p>`,
+				`<p class="singleLine">Donate at <span class="singleLine secondary">tracker.indiethon.live/donate</span></p>`
 			];
 		}
 

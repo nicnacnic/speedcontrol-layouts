@@ -54,6 +54,16 @@
         "height": 1080
       },
       {
+        "file": "4x3_3p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "4x3_4p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "16x9_1p.html",
         "width": 1920,
         "height": 1080
@@ -64,12 +74,37 @@
         "height": 1080
       },
       {
+        "file": "16x9_3p.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "16x9_4p.html",
         "width": 1920,
         "height": 1080
       },
       {
+        "file": "16x9_2p_Bingo.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "GB.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "GBA.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "DS.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "3DS.html",
         "width": 1920,
         "height": 1080
       },
@@ -82,6 +117,11 @@
         "file": "omnibar/omnibar.html",
         "width": 1920,
         "height": 82
+      },
+      {
+        "file": "shootingStar/shootingStar.html",
+        "width": 1920,
+        "height": 1080
       }
     ]
   },
